@@ -1,0 +1,87 @@
+一、jvm、jre、jdk的关系？
+JDK（Java Development Kit）java开发工具包
+JRE（Java Runtime Environment）java运行环境
+JVM（Java Virtual Machine）Java虚拟机
+JDK包含JRE包含JVM
+
+二、JavaBean的特性？
+JavaBean是java语言写成的可重用组件，所谓的JavaBean，是指符合如下标准的java类：
+1.类是公共的
+2.有一个无参构造
+3.有属性，属性为private，且有对应的get、set方法
+
+三、instanceof操作符。
+x instanceof A : 检验x是否为A的对象，返回值为boolean型。
+要求x所属的类和类A必须为子类和父类之间的关系，否则编译错误。
+如果x属于类A的之类B，x instanceof A值也为true。
+public class Person extends Object{...}
+public class Student extends Person{...}
+public class Gradute extends Object{...}
+-----------------------------------------
+public void method(Person e){
+        if (e instanceof Person)//处理Person类及其子类对象
+
+        if (e instanceof Student)//处理Student类及其子类对象
+
+        if (e instanceof Graduate)//处理Graduate类及其子类对象
+}
+
+四、内部类
+小栗子：
+class A{
+    private int s;
+    public class B{
+        public void mb(){
+            s = 100;
+            System.out.println("在内部类B中s = "+s);
+        }
+    }
+
+    public void ma(){
+        B i = new B();
+        i.mb();
+    }
+}
+
+public class Test{
+    public static void main(String args[]){
+        A o = new A();
+        o.ma();
+    }
+}
+内部类主要是解决java不能多重继承的问题
+
+五、初始化块
+初始化块的作用：对java对象进行初始化
+程序执行的顺序：
+声明成员变量的默认值
+显式初始化、多个初始化块依次被执行
+构造函数对成员变量进行赋值操作
+static的初始化块只执行一次，无static的初始化块每调用一次，就执行一次
+
+六、模板方法设计模式（TemplateMethod）
+抽象类提现的就是一种模板模式的设计，抽象类作为多个子类的通用模板，子类在抽象类的基础上进行拓展、改造，
+但是子类总体上会保留抽象类的行为方式。
+解决问题：
+当功能内部一部分实现是确定，一部分实现是不确定的，这时可以把不确定的部分暴露出去，让子类去实现
+编写一个抽象父类，父类提供了多个子类的通用方法，并把一个或多个方法留给其他子类实现，就是一种模板模式
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
