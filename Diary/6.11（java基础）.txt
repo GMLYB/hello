@@ -3,6 +3,8 @@ JDK（Java Development Kit）java开发工具包
 JRE（Java Runtime Environment）java运行环境
 JVM（Java Virtual Machine）Java虚拟机
 JDK包含JRE包含JVM
+JDK = JRE + 开发工具集（例如javac编译工具等）
+JRE = JVM + java SE标准类库
 
 二、JavaBean的特性？
 JavaBean是java语言写成的可重用组件，所谓的JavaBean，是指符合如下标准的java类：
