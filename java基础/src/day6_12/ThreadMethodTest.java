@@ -21,6 +21,8 @@ package day6_12;
  *     getPriority（）：返回线程优先级
  *     setPriority（int newPriority）：改变线程的优先级
  *
+ *     线程通信：wait()/notify()/notifyAll() : 属于object类
+ *
  */
 
 class MyThread3 extends Thread{
