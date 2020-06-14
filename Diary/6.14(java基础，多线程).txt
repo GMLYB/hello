@@ -1,0 +1,54 @@
+3.Lock（锁）
+      从JDK5.0开始，Java提供了更强大的线程同步机制--通过显式定义同步锁对象来实现同步，同步锁使用Lock对象充当
+      java.util.concurrent.locks.Lock接口是控制多个线程对共享资源进行访问的工具。锁提供了对共享资源的独占访问，每次只能有一个线程
+      对Lock对象加锁，线程开始访问共享资源之前应先获得Lock对象
+      ReentrantLock类实现了Lock，它拥有与synchronized相同的并发性和内存语义，在实现线程安全的控制中，比较常用的是ReentrantLock，可以
+      显式加锁、释放锁。
+
+经典例题：生产者/消费者问题
+      生产者（Productor）将产品交给店员（Clerk），而消费者（Customer）从店员处取走产品，店员一次只能持有固定数量的产品（比如：20），
+如果生产者试图生产更多的产品，店员会叫生产者停一下，如果店中有空位放产品了再通知生产者继续生产；如果店中没有产品了，店员会告诉消费者
+等一下，如果店中有产品再通知消费者来取走产品。
+这里可能会出现两个问题：
+      生产者比消费者快时，消费者会漏掉一些数据没有取到。
+      消费者比生产者快时，消费者会取走相同的数据。
+
+
+JDK5.0新增线程创建方式
+新增方式一：实现Callable接口
+与Runnable相比，Callable功能更加强大些
+      相比run()方法，可以有返回值
+      方法可以抛出异常
+      支持泛型返回值
+      需要借助FutureTask类，比如获取返回结果
+
+
+新增方式二：使用线程池
+背景：经常创建和销毁、使用量特别大的资源，比如并发情况下的线程，对性能影响很大。
+思路：提前创建好多个线程，放入线程池中，使用时候直接获取，使用完成放回池中。可以避免频繁创建销毁、实现重复利用。类似于生活中的公共交通工具
+好处：
+      提高响应速度（减少了创建线程的时间）
+      降低资源消耗（重复利用线程池中的线程，不需要每次都创建）
+      便于线程管理
+         corePoolSize：核心池的大小
+         maxmumPoolSize：最大线程数
+         keepAliveTime：线程没有任务时最多保持多长时间后会终止
+         ...........
+
+线程池相关API
+JDK5.0提供了线程池相关的API：ExecutorService和Executors
+ExecutorService：真正的线程池接口，常见子类ThreadPoolExecutor
+      void execute(Runnable command)：执行任务/命令，没有返回值，一般来执行Runnable
+      <T>Future<T>submit(Callable<T>task)：执行任务，有返回值，一般用来执行Callable
+      void shutdown()：关闭连接池
+
+Executors：工具类、线程池的工厂类，用于创建并返回不同类型的线程池
+      Executors.newCachedThreadPool()：创建一个可根据需要创建新线程的线程池
+      Executors.newFixedThreadPool(n)：创建一个可重用固定线程数的线程池
+      Executors.newSingleThreadExecutor()：创建一个只有一个线程的线程池
+      Executors.newScheduledThreadPool(n)：创建一个线程池，它可安排在给定延迟后运行命令或者定期地执行
+
+
+
+
+
