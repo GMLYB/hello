@@ -14,16 +14,19 @@ class Window5 extends Thread{
 
     @Override
     public void run() {
-        while (true){
+        while (show()){
             show();
         }
     }
 
-    private static synchronized void show(){//同步监视器：当前的类
+    private static synchronized boolean show(){//同步监视器：当前的类
 //    private synchronized void show(){同步监视器：t1,t2,t3 此种解决方法是错误的
         if(ticket>0){
-            System.out.println(Thread.currentThread().getName()+":卖票，票号为:"+ticket);
+            System.out.println(Thread.currentThread().getName()+":卖票,票号为:"+ticket);
             ticket--;
+            return true;
+        }else {
+            return false;
         }
     }
 }
@@ -36,11 +39,8 @@ public class WindowTest5 {
         w1.setName("窗口1");
         w2.setName("窗口2");
         w3.setName("窗口3");
-
         w1.start();
         w2.start();
         w3.start();
-
-
     }
 }

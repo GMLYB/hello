@@ -18,19 +18,20 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 
 class Window implements Runnable{
-
     private int ticket = 100;
-
-    //ReentrantLock(); true 公平锁 false 抢占锁
+    /**
+     * ReentrantLock(); true 公平锁 false 非公平锁 默认采用非公平锁
+     * 公平锁：操作会排一个队按顺序执行，来保证执行顺序。（会消耗更多的时间来排队）
+     * 非公平锁：是无序状态允许插队，jvm会自动计算如何处理更快速来调度插队。（如果不关心顺序，这个速度会更快）
+     */
     //第一步 ：实例化ReentrantLock
     private ReentrantLock lock = new ReentrantLock();
-
     @Override
     public void run() {
         while (true){
 
             try {
-//                2.调用锁定方法lock（）
+//              2.调用锁定方法lock（）
                 lock.lock();
 
                 if(ticket > 0){

@@ -16,18 +16,19 @@ class Window4 implements Runnable{
 
     private int ticket = 100;
 
-
     @Override
     public void run() {
-        while (true){
+        while (show()){
             show();
         }
     }
-
-    private synchronized void show(){//同步监视器：this
+    private synchronized boolean show(){//同步监视器：this
         if(ticket>0){
             System.out.println(Thread.currentThread().getName()+":卖票，票号为:"+ticket);
             ticket--;
+            return true;
+        }else {
+            return false;
         }
     }
 
@@ -48,5 +49,4 @@ public class WindowTest4{
         t2.start();
         t3.start();
     }
-
 }

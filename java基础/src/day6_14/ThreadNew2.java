@@ -45,21 +45,16 @@ public class ThreadNew2 {
     public static void main(String[] args) {
         //1.提供指定线程数量的线程池
         ExecutorService service = Executors.newFixedThreadPool(10);
-
 //        ThreadPoolExecutor service1 = (ThreadPoolExecutor)service;
-//
         //设置线程池的一些属性
 //        System.out.println(service.getClass());
-//
 //        service1.setCorePoolSize(15);
 //        service1.setKeepAliveTime();
-
 
         //2.执行指定的线程操作。需要提供实现Runnable接口或Callable接口实现类的对象
         service.execute(new NumberThread1());//适用于Runnable
         service.execute(new NumberThread2());//适用于Runnable
 //        service.submit();//适用于Callable
-
         //3.关闭连接池
         service.shutdown();
     }

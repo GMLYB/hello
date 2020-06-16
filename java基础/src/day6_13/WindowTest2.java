@@ -33,11 +33,8 @@ package day6_13;
  */
 
 class Window1 implements Runnable{
-
     private int ticket = 100;
-
 //    Object obj = new Object();
-
     @Override
     public void run() {
         while (true){
@@ -45,24 +42,20 @@ class Window1 implements Runnable{
       //      synchronized(obj){
             synchronized(this){//用当前对象去充当
                 if(ticket>0){
-//
 //                try {
 //                    Thread.sleep(500);
 //                } catch (InterruptedException e) {
 //                    e.printStackTrace();
 //                }
-
                     System.out.println(Thread.currentThread().getName()+":卖票，票号为:"+ticket);
                     ticket--;
                 }else {
                     break;
                 }
             }
-
         }
     }
 }
-
 public class WindowTest2 {
     public static void main(String[] args) {
         Window1 w1 = new Window1();
@@ -70,15 +63,11 @@ public class WindowTest2 {
         Thread t1 = new Thread(w1);
         Thread t2 = new Thread(w1);
         Thread t3 = new Thread(w1);
-
         t1.setName("窗口1");
         t2.setName("窗口2");
         t3.setName("窗口3");
-
         t1.start();
         t2.start();
         t3.start();
-
-
     }
 }

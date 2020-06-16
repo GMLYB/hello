@@ -23,7 +23,6 @@ class Window2 extends Thread{
     @Override
     public void run() {
         while (true){
-
           //  synchronized (this){     不能用this，这里不唯一
           //  synchronized (Window2.class){  正确，类也是对象,也是唯一的  Class cla = Window2.class; Window2.class 只会加载一次
             synchronized (suo){
@@ -37,7 +36,6 @@ class Window2 extends Thread{
         }
     }
 }
-
 public class WindowTest3 {
     public static void main(String[] args) {
         Window2 w1 = new Window2();
@@ -46,11 +44,8 @@ public class WindowTest3 {
         w1.setName("窗口1");
         w2.setName("窗口2");
         w3.setName("窗口3");
-
         w1.start();
         w2.start();
         w3.start();
-
-
     }
 }

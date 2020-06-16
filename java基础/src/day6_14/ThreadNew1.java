@@ -13,19 +13,12 @@ import java.util.concurrent.FutureTask;
  * 2.call()可以抛出异常，被外面的操作捕获，获取异常的信息
  * 3.Callable是支持泛型的
  *
+ * 例子，遍历100之内偶数的和，并返回总和
  */
 
 
 //1.创建一个实现Callable的实现类
 class NumThread implements Callable{
-
-    /**
-     * 例子，遍历100之内偶数的和，并返回总和
-     * @return
-     * @throws Exception
-     */
-
-
     //2.实现call()方法，将此线程需要执行的操作声明在call()方法中
     @Override
     public Object call() throws Exception {
@@ -40,7 +33,6 @@ class NumThread implements Callable{
     }
 }
 
-
 public class ThreadNew1 {
     public static void main(String[] args) {
         //3.创建Callable接口实现类的对象
@@ -51,8 +43,8 @@ public class ThreadNew1 {
         new Thread(futureTask).start();
 
         try {
-            //get()返回值即为FutureTask构造器参数Callable实现类重写call()的返回值  非必要
-            //（非必须）6.或者Callable中的call方法的返回值
+            //(非必须)get()返回值即为FutureTask构造器参数Callable实现类重写call()的返回值
+            //(非必须)6.获取Callable中的call方法的返回值
             Object sum =  futureTask.get();
             System.out.println("总和为"+sum);
         } catch (InterruptedException e) {
@@ -60,6 +52,5 @@ public class ThreadNew1 {
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-
     }
 }
