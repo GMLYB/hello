@@ -54,7 +54,7 @@ class DrawBox implements Runnable{
                 }
                 int position = new Random().nextInt(arr.length);
                 System.out.println(Thread.currentThread().getName()+":"+arr[position]);
-                
+
                 try {
                     wait();
                 } catch (InterruptedException e) {
