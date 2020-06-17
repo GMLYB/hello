@@ -14,17 +14,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/day6_16/LeetCode_7.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="65" column="44" lean-forward="true" selection-start-line="65" selection-start-column="44" selection-end-line="65" selection-end-column="44" />
+            <state relative-caret-position="175">
+              <caret line="42" column="11" selection-start-line="42" selection-start-column="11" selection-end-line="42" selection-end-column="11" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/day6_16/StringTest.java">
+        <entry file="file://$PROJECT_DIR$/src/day6_17/StringTest2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-502">
-              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+            <state relative-caret-position="372">
+              <caret line="150" lean-forward="true" selection-start-line="150" selection-end-line="150" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -72,6 +75,8 @@
         <option value="$PROJECT_DIR$/src/day6_16/LeetCode_1.java" />
         <option value="$PROJECT_DIR$/src/day6_16/StringTest.java" />
         <option value="$PROJECT_DIR$/src/day6_16/LeetCode_7.java" />
+        <option value="$PROJECT_DIR$/src/day6_17/StringTest2.java" />
+        <option value="$PROJECT_DIR$/src/day6_17/LeetCode_9.java" />
       </list>
     </option>
   </component>
@@ -91,6 +96,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -110,11 +116,16 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="day6_16" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Java基础（并发）" type="b2602c69:ProjectViewProjectNode" />
+              <item name="java基础" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="day6_17" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -123,7 +134,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1592324638416" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1592408995377" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -146,13 +157,13 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.LeetCode_7">
-    <configuration name="LeetCode_7" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="day6_16.LeetCode_7" />
+  <component name="RunManager" selected="Application.LeetCode_9">
+    <configuration name="LeetCode_9" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="day6_17.LeetCode_9" />
       <module name="Java基础（并发）" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="day6_16.*" />
+          <option name="PATTERN" value="day6_17.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -160,78 +171,84 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LockTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="day6_14.LockTest" />
+    <configuration name="StringTest2.test2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Java基础（并发）" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="day6_14.*" />
+          <option name="PATTERN" value="day6_17.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="WindowTest5" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="day6_13.WindowTest5" />
-      <module name="Java基础（并发）" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="day6_13.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="StringTest.test1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Java基础（并发）" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="day6_16.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="day6_16" />
-      <option name="MAIN_CLASS_NAME" value="day6_16.StringTest" />
-      <option name="METHOD_NAME" value="test1" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="StringTest.test2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Java基础（并发）" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="day6_16.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="day6_16" />
-      <option name="MAIN_CLASS_NAME" value="day6_16.StringTest" />
+      <option name="PACKAGE_NAME" value="day6_17" />
+      <option name="MAIN_CLASS_NAME" value="day6_17.StringTest2" />
       <option name="METHOD_NAME" value="test2" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="StringTest2.test3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Java基础（并发）" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="day6_17.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="day6_17" />
+      <option name="MAIN_CLASS_NAME" value="day6_17.StringTest2" />
+      <option name="METHOD_NAME" value="test3" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StringTest2.test4" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Java基础（并发）" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="day6_17.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="day6_17" />
+      <option name="MAIN_CLASS_NAME" value="day6_17.StringTest2" />
+      <option name="METHOD_NAME" value="test4" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StringTest2.test6" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Java基础（并发）" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="day6_17.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="day6_17" />
+      <option name="MAIN_CLASS_NAME" value="day6_17.StringTest2" />
+      <option name="METHOD_NAME" value="test6" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
-      <item itemvalue="Application.WindowTest5" />
-      <item itemvalue="Application.LockTest" />
-      <item itemvalue="Application.LeetCode_7" />
-      <item itemvalue="JUnit.StringTest.test1" />
-      <item itemvalue="JUnit.StringTest.test2" />
+      <item itemvalue="JUnit.StringTest2.test2" />
+      <item itemvalue="JUnit.StringTest2.test3" />
+      <item itemvalue="JUnit.StringTest2.test4" />
+      <item itemvalue="JUnit.StringTest2.test6" />
+      <item itemvalue="Application.LeetCode_9" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.LeetCode_7" />
-        <item itemvalue="JUnit.StringTest.test2" />
-        <item itemvalue="JUnit.StringTest.test1" />
-        <item itemvalue="Application.LockTest" />
-        <item itemvalue="Application.WindowTest5" />
+        <item itemvalue="Application.LeetCode_9" />
+        <item itemvalue="JUnit.StringTest2.test6" />
+        <item itemvalue="JUnit.StringTest2.test4" />
+        <item itemvalue="JUnit.StringTest2.test3" />
+        <item itemvalue="JUnit.StringTest2.test2" />
       </list>
     </recent_temporary>
   </component>
@@ -253,22 +270,44 @@
       <workItem from="1592207252061" duration="4667000" />
       <workItem from="1592215078871" duration="590000" />
       <workItem from="1592227686442" duration="27600000" />
+      <workItem from="1592378248120" duration="19214000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="StringTest_test1 - 2020.06.16 at 20h 58m 53s.xml">
-      <configuration name="StringTest.test1" configurationId="JUnit" />
+    <history-entry file="StringTest2_test3 - 2020.06.17 at 20h 32m 25s.xml">
+      <configuration name="StringTest2.test3" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="StringTest_test1 - 2020.06.16 at 22h 09m 12s.xml">
-      <configuration name="StringTest.test1" configurationId="JUnit" />
+    <history-entry file="StringTest2_test3 - 2020.06.17 at 20h 32m 35s.xml">
+      <configuration name="StringTest2.test3" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="StringTest_test2 - 2020.06.16 at 22h 27m 55s.xml">
-      <configuration name="StringTest.test2" configurationId="JUnit" />
+    <history-entry file="StringTest2_test4 - 2020.06.17 at 21h 29m 38s.xml">
+      <configuration name="StringTest2.test4" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="StringTest2_test4 - 2020.06.17 at 21h 30m 18s.xml">
+      <configuration name="StringTest2.test4" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="StringTest2_test4 - 2020.06.17 at 21h 30m 32s.xml">
+      <configuration name="StringTest2.test4" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="StringTest2_test4 - 2020.06.17 at 21h 30m 47s.xml">
+      <configuration name="StringTest2.test4" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="StringTest2_test4 - 2020.06.17 at 21h 31m 04s.xml">
+      <configuration name="StringTest2.test4" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="StringTest2_test6 - 2020.06.17 at 21h 57m 58s.xml">
+      <configuration name="StringTest2.test6" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="StringTest2_test6 - 2020.06.17 at 21h 58m 38s.xml">
+      <configuration name="StringTest2.test6" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="StringTest2_test6 - 2020.06.17 at 22h 00m 04s.xml">
+      <configuration name="StringTest2.test6" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82485000" />
+    <option name="totallyTimeSpent" value="101699000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -283,7 +322,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32921812" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39917696" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -335,10 +374,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="57">
           <caret line="3" column="8" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
-          <folding>
-            <element signature="e#246#247#0" expanded="true" />
-            <element signature="e#276#277#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -418,9 +453,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="456">
           <caret line="45" column="67" selection-start-line="45" selection-start-column="67" selection-end-line="45" selection-end-column="67" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -435,9 +467,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="201">
           <caret line="27" column="7" lean-forward="true" selection-start-line="27" selection-start-column="7" selection-end-line="27" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -494,28 +523,37 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
           <caret line="57" column="21" selection-start-line="57" selection-start-column="21" selection-end-line="57" selection-end-column="21" />
-          <folding>
-            <element signature="e#331#332#0" expanded="true" />
-            <element signature="e#361#362#0" expanded="true" />
-            <element signature="e#390#391#0" expanded="true" />
-            <element signature="e#416#417#0" expanded="true" />
-            <element signature="e#515#516#0" expanded="true" />
-            <element signature="e#549#550#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/day6_16/LeetCode_7.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="65" column="44" lean-forward="true" selection-start-line="65" selection-start-column="44" selection-end-line="65" selection-end-column="44" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/day6_16/StringTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-502">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        <state relative-caret-position="209">
+          <caret line="48" column="30" selection-start-line="48" selection-start-column="24" selection-end-line="48" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/day6_16/LeetCode_7.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="42" column="11" selection-start-line="42" selection-start-column="11" selection-end-line="42" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/day6_17/LeetCode_9.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/day6_17/StringTest2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="150" lean-forward="true" selection-start-line="150" selection-end-line="150" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
