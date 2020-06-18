@@ -69,28 +69,54 @@ public class StringTest2 {
     /**
      * 2.将一个字符串进行反转。将字符串中指定部分进行反转。比如"abcdefg"反转为"abfedcg"
      */
+    public String reverse(String str,int startIndex,int endIndex){
+
+        char[] arr = str.toCharArray();
+        for(int x = startIndex,y = endIndex;x < y;x++,y++){
+            char temp = arr[x];
+            arr[x] = arr[y];
+            arr[y] = temp;
+        }
+        return new String(arr);
+    }
+
     @Test
     public void test3(){
         String s = "abcdefg";//0-6
         int start = 2;
         int end  = 5;
-        char[] arr = s.toCharArray();
-        String laststr = "";
-        for (int i = 0; i < s.length(); i++) {
-
-            if(i >= start && i <= end){
-                laststr += arr[end+start-i];
-            }else {
-                laststr += arr[i];
-            }
+        StringBuilder laststr = new StringBuilder(s.length());
+        laststr.append(s.substring(0,start));
+        for (int i = end; i >= start; i--) {
+            laststr.append(s.charAt(i));
         }
-        System.out.println("last:"+laststr);
+        laststr.append(s.substring(end+1));
+        System.out.println("last:"+laststr.toString());
     }
 
     /**
      * 3.获取一个字符串在另外一个字符串出现的次数
      * 比如获取:"ab"在"abkkcadkabkebfkabkskab"中出现场的次数
      */
+    public int getCount(String mainStr,String subStr){
+        int count =0;
+        int index = 0;
+        if(mainStr.length() >= subStr.length()){
+            //方式一
+//            while ((index = mainStr.indexOf(subStr)) != -1){
+//                count++;
+//                mainStr = mainStr.substring(index+subStr.length())
+//            }
+
+            while ((index = mainStr.indexOf(subStr,index)) != -1){
+                count++;
+                index += subStr.length();
+            }
+        }
+        return count;
+    }
+
+
     @Test
     public void test4(){
         String mob = "abkkcadkababakeabbfkabkskab";
@@ -119,19 +145,29 @@ public class StringTest2 {
      * str1 = "abcwerthelloyuiodef";str2 = "cvhellobnm"
      * 提示：将短的那个字符串进行长度依次递减的子串与较长的串比较
      */
+    public String getMaxSameString(String str1,String str2){
+        String maxStr = (str1.length() >= str2.length())? str1 : str2;
+        String minStr = (str1.length() < str2.length())? str1 : str2;
+        int length = minStr.length();
+        for (int i = 0; i < length; i++) {
+
+            for (int x = 0,y = length - i; y <= length ; x++,y++) {
+                String subStr = minStr.substring(x, y);
+                if(maxStr.contains(subStr)){
+                    return subStr;
+                }
+            }
+        }
+        return null;
+    }
+
     @Test
     public void test5(){
         String str1 = "abcwerthelloyuiodef";
         String str2 = "cvhellobnm";
-        String laststr = "";
-        int max = 0;
-        for (int i = 0; i < str2.length(); i++) {
-            for (int j = 0; j < str1.length(); j++) {
-                if(str2.charAt(i) == str1.charAt(j)){
+        String maxSameString = getMaxSameString(str1, str2);
+        System.out.println(maxSameString);
 
-                }
-            }
-        }
     }
 
     /**
@@ -154,7 +190,6 @@ public class StringTest2 {
             lstr += c;
         }
         System.out.println(lstr);
-
     }
 
 }
