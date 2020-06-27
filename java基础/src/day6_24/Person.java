@@ -18,6 +18,16 @@ public class Person {
         this.id = id;
     }
 
+    private String show(String nation){
+        System.out.println("国籍为："+nation);
+        return nation;
+    }
+    private static void showDesc(){
+        System.out.println("我是一个(*╹▽╹*)的人");
+    }
+
+
+
     public String getName() {
         return name;
     }
