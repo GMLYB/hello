@@ -40,7 +40,7 @@ class ProxyClothFactory implements ClothFactory{
 }
 
 
-//代理类
+//被代理类
 class NikeClothFactory implements ClothFactory{
 
     @Override

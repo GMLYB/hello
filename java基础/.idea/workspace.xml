@@ -12,37 +12,40 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/day6_30/ProxyTest.java">
+        <entry file="file://$PROJECT_DIR$/src/day7_01/LambdaTest1.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-833">
-              <caret line="30" column="5" lean-forward="true" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
+            <state relative-caret-position="380">
+              <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#210#211#0" expanded="true" />
-                <element signature="e#237#238#0" expanded="true" />
-                <element signature="e#305#306#0" expanded="true" />
-                <element signature="e#341#342#0" expanded="true" />
-                <element signature="e#995#996#0" expanded="true" />
-                <element signature="e#1024#1025#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/day7_01/LambdaTest2.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="228">
+              <caret line="31" column="63" lean-forward="true" selection-start-line="31" selection-start-column="63" selection-end-line="31" selection-end-column="63" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#559#560#0" expanded="true" />
+                <element signature="e#629#630#0" expanded="true" />
+                <element signature="e#414#415#0" expanded="true" />
+                <element signature="e#432#433#0" expanded="true" />
+                <element signature="e#1134#1135#0" expanded="true" />
+                <element signature="e#1188#1189#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/day6_30/LeetCode_58.java">
+        <entry file="file://$PROJECT_DIR$/src/day7_01/LeetCode_88.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="9" column="3" lean-forward="true" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/day6_30/staticProxyTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+            <state relative-caret-position="429">
+              <caret line="28" column="21" lean-forward="true" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -61,19 +64,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/day6_20/LeetCode_20.java" />
-        <option value="$PROJECT_DIR$/src/day6_21/LeetCode_26.java" />
-        <option value="$PROJECT_DIR$/src/day6_22/IntAddressTest.java" />
-        <option value="$PROJECT_DIR$/src/day6_22/TCPTest.java" />
-        <option value="$PROJECT_DIR$/src/day6_22/TCPTest1.java" />
-        <option value="$PROJECT_DIR$/src/day6_22/TCPTest2.java" />
         <option value="$PROJECT_DIR$/src/day6_22/TCPTest3.java" />
         <option value="$PROJECT_DIR$/src/day6_22/UDPTest.java" />
         <option value="$PROJECT_DIR$/src/day6_22/URLTest.java" />
         <option value="$PROJECT_DIR$/src/day6_22/URLTest1.java" />
         <option value="$PROJECT_DIR$/src/day6_22/LeetCode_27.java" />
         <option value="$PROJECT_DIR$/src/day6_23/Person.java" />
-        <option value="$PROJECT_DIR$/src/day6_23/ReflectionTest.java" />
         <option value="$PROJECT_DIR$/src/day6_23/jdbc.properties" />
         <option value="$PROJECT_DIR$/src/day6_23/ClassLoaderTest.java" />
         <option value="$PROJECT_DIR$/src/day6_23/NewInstanceTest.java" />
@@ -109,9 +105,16 @@
         <option value="$PROJECT_DIR$/src/day6_30/SuperClass.java" />
         <option value="$PROJECT_DIR$/src/day6_30/CompareB.java" />
         <option value="$PROJECT_DIR$/src/day6_30/SubClassTest.java" />
-        <option value="$PROJECT_DIR$/src/day6_30/ProxyTest.java" />
-        <option value="$PROJECT_DIR$/src/day6_30/staticProxyTest.java" />
         <option value="$PROJECT_DIR$/src/day6_30/LeetCode_58.java" />
+        <option value="$PROJECT_DIR$/src/day6_23/ReflectionTest.java" />
+        <option value="$PROJECT_DIR$/src/day6_30/staticProxyTest.java" />
+        <option value="$PROJECT_DIR$/src/day6_30/ProxyTest.java" />
+        <option value="$PROJECT_DIR$/src/day7_01/ProxyExercise.java" />
+        <option value="$PROJECT_DIR$/src/day7_01/LambdaTest.java" />
+        <option value="$PROJECT_DIR$/src/day7_01/MyInterFace.java" />
+        <option value="$PROJECT_DIR$/src/day7_01/LambdaTest1.java" />
+        <option value="$PROJECT_DIR$/src/day7_01/LambdaTest2.java" />
+        <option value="$PROJECT_DIR$/src/day7_01/LeetCode_88.java" />
       </list>
     </option>
   </component>
@@ -131,6 +134,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -147,14 +152,12 @@
               <item name="Java基础（并发）" type="b2602c69:ProjectViewProjectNode" />
               <item name="java基础" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="day6_30" type="462c0819:PsiDirectoryNode" />
+              <item name="day7_01" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -163,7 +166,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1593532151922" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1593619880095" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -188,13 +191,13 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.LeetCode_58">
-    <configuration name="LeetCode_58" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="day6_30.LeetCode_58" />
+  <component name="RunManager" selected="Application.LeetCode_88">
+    <configuration name="LeetCode_88" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="day7_01.LeetCode_88" />
       <module name="Java基础（并发）" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="day6_30.*" />
+          <option name="PATTERN" value="day7_01.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -202,72 +205,82 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NoFactory" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="day6_30.NoFactory" />
+    <configuration name="LambdaTest1.test2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Java基础（并发）" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="day6_30.*" />
+          <option name="PATTERN" value="day7_01.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="day7_01" />
+      <option name="MAIN_CLASS_NAME" value="day7_01.LambdaTest1" />
+      <option name="METHOD_NAME" value="test2" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProxyTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="day6_30.ProxyTest" />
+    <configuration name="LambdaTest2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Java基础（并发）" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="day6_30.*" />
+          <option name="PATTERN" value="day7_01.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="day7_01" />
+      <option name="MAIN_CLASS_NAME" value="day7_01.LambdaTest2" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SubClassTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="day6_30.SubClassTest" />
+    <configuration name="LambdaTest2.test1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Java基础（并发）" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="day6_30.*" />
+          <option name="PATTERN" value="day7_01.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="day7_01" />
+      <option name="MAIN_CLASS_NAME" value="day7_01.LambdaTest2" />
+      <option name="METHOD_NAME" value="test1" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="staticProxyTest (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="day6_30.staticProxyTest" />
+    <configuration name="LambdaTest2.test2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Java基础（并发）" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="day6_30.*" />
+          <option name="PATTERN" value="day7_01.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="day7_01" />
+      <option name="MAIN_CLASS_NAME" value="day7_01.LambdaTest2" />
+      <option name="METHOD_NAME" value="test2" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.NoFactory" />
-      <item itemvalue="Application.SubClassTest" />
-      <item itemvalue="Application.staticProxyTest (1)" />
-      <item itemvalue="Application.ProxyTest" />
-      <item itemvalue="Application.LeetCode_58" />
+      <item itemvalue="JUnit.LambdaTest1.test2" />
+      <item itemvalue="JUnit.LambdaTest2" />
+      <item itemvalue="JUnit.LambdaTest2.test1" />
+      <item itemvalue="JUnit.LambdaTest2.test2" />
+      <item itemvalue="Application.LeetCode_88" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.LeetCode_58" />
-        <item itemvalue="Application.ProxyTest" />
-        <item itemvalue="Application.staticProxyTest (1)" />
-        <item itemvalue="Application.SubClassTest" />
-        <item itemvalue="Application.NoFactory" />
+        <item itemvalue="Application.LeetCode_88" />
+        <item itemvalue="JUnit.LambdaTest2.test2" />
+        <item itemvalue="JUnit.LambdaTest2.test1" />
+        <item itemvalue="JUnit.LambdaTest2" />
+        <item itemvalue="JUnit.LambdaTest1.test2" />
       </list>
     </recent_temporary>
   </component>
@@ -308,43 +321,44 @@
       <workItem from="1593485137940" duration="3211000" />
       <workItem from="1593491714256" duration="6000" />
       <workItem from="1593505659131" duration="10529000" />
+      <workItem from="1593567520540" duration="18398000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ReflectionTest_testMethod - 2020.06.27 at 16h 42m 44s.xml">
-      <configuration name="ReflectionTest.testMethod" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ReflectionTest_testMethod - 2020.06.27 at 16h 44m 25s.xml">
-      <configuration name="ReflectionTest.testMethod" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="FieldTest_test1 - 2020.06.27 at 20h 47m 52s.xml">
-      <configuration name="FieldTest.test1" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="FieldTest_test2 - 2020.06.27 at 20h 48m 32s.xml">
-      <configuration name="FieldTest.test2" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="FieldTest_test2 - 2020.06.27 at 20h 49m 59s.xml">
-      <configuration name="FieldTest.test2" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MethodTest_test1 - 2020.06.27 at 20h 54m 55s.xml">
-      <configuration name="MethodTest.test1" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MethodTest_test2 - 2020.06.27 at 20h 55m 31s.xml">
-      <configuration name="MethodTest.test2" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ReflectionTest_testField1 - 2020.06.27 at 21h 03m 32s.xml">
-      <configuration name="ReflectionTest.testField1" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ReflectionTest_testMethod - 2020.06.27 at 21h 04m 03s.xml">
-      <configuration name="ReflectionTest.testMethod" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="JDK8DateTimeTest_test1 - 2020.06.29 at 17h 40m 51s.xml">
       <configuration name="JDK8DateTimeTest.test1" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="LambdaTest_test1 - 2020.07.01 at 21h 37m 38s.xml">
+      <configuration name="LambdaTest.test1" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="LambdaTest_test2 - 2020.07.01 at 21h 40m 12s.xml">
+      <configuration name="LambdaTest.test2" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="LambdaTest_test2 - 2020.07.01 at 21h 43m 58s.xml">
+      <configuration name="LambdaTest.test2" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="LambdaTest_test2 - 2020.07.01 at 21h 45m 33s.xml">
+      <configuration name="LambdaTest.test2" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="LambdaTest1_test2 - 2020.07.01 at 22h 40m 38s.xml">
+      <configuration name="LambdaTest1.test2" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="LambdaTest2 - 2020.07.01 at 23h 40m 23s.xml">
+      <configuration name="LambdaTest2" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="LambdaTest2_test1 - 2020.07.01 at 23h 42m 24s.xml">
+      <configuration name="LambdaTest2.test1" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="LambdaTest2_test2 - 2020.07.01 at 23h 50m 03s.xml">
+      <configuration name="LambdaTest2.test2" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="LambdaTest2_test2 - 2020.07.01 at 23h 52m 23s.xml">
+      <configuration name="LambdaTest2.test2" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="321004000" />
+    <option name="totallyTimeSpent" value="339402000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -644,42 +658,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/day6_20/LeetCode_20.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/day6_22/LeetCode_27.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="29" column="9" lean-forward="true" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/day6_21/LeetCode_26.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="54" column="45" selection-start-line="54" selection-start-column="45" selection-end-line="54" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/package-info.java" />
-    <entry file="file://$PROJECT_DIR$/src/day6_23/jdbc.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" column="15" selection-start-line="1" selection-start-column="15" selection-end-line="1" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/day6_23/LeetCode_28.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/day6_24/LeetCode_35.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
@@ -701,65 +679,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/day6_23/NewInstanceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-244">
-          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/day6_23/ClassLoaderTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="23" column="24" lean-forward="true" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/day6_24/FieldTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/day6_24/MethodTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="51" column="61" lean-forward="true" selection-start-line="51" selection-start-column="61" selection-end-line="51" selection-end-column="61" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/day6_24/OtherTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="106" column="31" lean-forward="true" selection-start-line="106" selection-start-column="31" selection-end-line="106" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/day6_24/LeetCode_38.kt" />
-    <entry file="file://$PROJECT_DIR$/src/day6_23/ReflectionTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2063">
-          <caret line="118" column="36" selection-start-line="118" selection-start-column="36" selection-end-line="118" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/day6_24/ReflectionTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1463">
-          <caret line="83" column="30" selection-start-line="83" selection-start-column="30" selection-end-line="83" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/day6_24/LeetCode_38.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1012,33 +932,155 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/day6_30/LeetCode_58.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="23" column="22" lean-forward="true" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/day6_23/NewInstanceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="988">
+          <caret line="54" column="32" lean-forward="true" selection-start-line="54" selection-start-column="32" selection-end-line="54" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/day6_24/ReflectionTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-236">
+          <caret line="56" column="17" selection-start-line="56" selection-start-column="17" selection-end-line="56" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/day6_24/OtherTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1843">
+          <caret line="102" column="24" lean-forward="true" selection-start-line="102" selection-start-column="24" selection-end-line="102" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/day6_23/ClassLoaderTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="17" column="23" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/day6_24/MethodTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="64" column="40" lean-forward="true" selection-start-line="64" selection-start-column="40" selection-end-line="64" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/day6_24/FieldTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="339">
+          <caret line="36" column="20" lean-forward="true" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/day6_30/staticProxyTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        <state relative-caret-position="353">
+          <caret line="25" column="24" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/day6_23/ReflectionTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="92" column="19" lean-forward="true" selection-start-line="92" selection-start-column="19" selection-end-line="92" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/day7_01/MyInterFace.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="4" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/day7_01/LambdaTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="18" selection-start-line="18" selection-end-line="18" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#226#227#0" expanded="true" />
+            <element signature="e#287#288#0" expanded="true" />
+            <element signature="e#655#656#0" expanded="true" />
+            <element signature="e#716#717#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/day7_01/ProxyExercise.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="35" column="13" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#208#209#0" expanded="true" />
+            <element signature="e#244#245#0" expanded="true" />
+            <element signature="e#361#362#0" expanded="true" />
+            <element signature="e#397#398#0" expanded="true" />
+            <element signature="e#627#628#0" expanded="true" />
+            <element signature="e#657#658#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/day6_30/ProxyTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-833">
-          <caret line="30" column="5" lean-forward="true" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
+        <state relative-caret-position="364">
+          <caret line="87" column="54" selection-start-line="87" selection-start-column="42" selection-end-line="87" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#210#211#0" expanded="true" />
-            <element signature="e#237#238#0" expanded="true" />
-            <element signature="e#305#306#0" expanded="true" />
-            <element signature="e#341#342#0" expanded="true" />
-            <element signature="e#995#996#0" expanded="true" />
-            <element signature="e#1024#1025#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/day6_30/LeetCode_58.java">
+    <entry file="file://$PROJECT_DIR$/src/day7_01/LambdaTest1.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="3" lean-forward="true" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+        <state relative-caret-position="380">
+          <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/day7_01/LambdaTest2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="31" column="63" lean-forward="true" selection-start-line="31" selection-start-column="63" selection-end-line="31" selection-end-column="63" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#559#560#0" expanded="true" />
+            <element signature="e#629#630#0" expanded="true" />
+            <element signature="e#414#415#0" expanded="true" />
+            <element signature="e#432#433#0" expanded="true" />
+            <element signature="e#1134#1135#0" expanded="true" />
+            <element signature="e#1188#1189#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/day7_01/LeetCode_88.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="429">
+          <caret line="28" column="21" lean-forward="true" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
         </state>
       </provider>
     </entry>
