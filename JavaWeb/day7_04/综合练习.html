@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>综合练习</title>
+</head>
+<body>
+    <table cellpadding="5" width="500">
+        <thead><h2>青春不常在，抓紧谈恋爱</h2></thead>
+        <tbody>
+            <form action="index.php">
+                <tr>
+                    <td>性别：</td>
+                    <td>
+                        <input type="radio" name="sex" id="man"><label for="man"> <img src="https://dss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3597172886,1054565263&fm=26&gp=0.jpg" alt="男士图像" width="20">男</label>
+                        <input type="radio" name="sex" id="woman"><label for="woman"><img src="https://dss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2474917789,1368894186&fm=26&gp=0.jpg" alt="女生图像" width="20">女</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>生日：</td>
+                    <td>
+                        <select name="year" id="">
+                            <option value="" selected="selected">--请选择年--</option>
+                            <option value="">2020</option>
+                            <option value="">2019</option>
+                            <option value="">2018</option>
+                        </select>
+                        <select name="month" id="">
+                            <option value="" selected="selected">--请选择月--</option>
+                            <option value="">12</option>
+                            <option value="">11</option>
+                            <option value="">10</option>
+                        </select>
+                        <select name="day" id="">
+                            <option value="" selected="selected">--请选择日--</option>
+                            <option value="">30</option>
+                            <option value="">29</option>
+                            <option value="">28</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>所在地区</td>
+                    <td><input type="text" name="address" id="" value="北京朝阳区" maxlength="20"></td>
+                </tr>
+                <tr>
+                    <td>婚姻状况：</td>
+                    <td>
+                        <input type="radio" name="hun" id="yh" checked="checked"><label for="yh">已婚</label>
+                        <input type="radio" name="hun" id="wh"><label for="wh">未婚</label>
+                        <input type="radio" name="hun" id="lh"><label for="lh">离婚</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>学历:</td>
+                    <td><input type="text" name="xueli" id="" maxlength="20"></td>
+                </tr>
+
+                <tr>
+                    <td>喜欢类型：</td>
+                    <td>
+                <input type="checkbox" name="liketype" id="wmei"><label for="wmd">妩媚的</label>
+                <input type="checkbox" name="liketype" id="kad"><label for="kad">可爱的</label>
+                <input type="checkbox" name="liketype" id="xxr"><label for="xxr">小鲜肉</label>
+                <input type="checkbox" name="liketype" id="llr"><label for="llr">老腊肉</label>
+                <input type="checkbox" name="liketype" id="dxh"><label for="dxh">都喜欢</label> 
+                    </td>
+                </tr>
+                <tr>
+                    <td>自我介绍</td>
+                    <td><textarea name="zwjs" id="" cols="20" rows="3">自我介绍</textarea> </td>
+                </tr>
+                <tr>
+                    <td rowspan="4"></td>
+                    <td><input type="submit" value="免费注册"></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="tyzc" id="" checked="checked">我同意注册条款和会员加入标准</td>
+                </tr>
+                <tr>
+                    <td><a href="login.jsp" target="_blank">我是会员，立即登录</a></td>
+                </tr>
+                <tr>
+                    <td> 
+                        <h4>我承诺</h4>
+                        <ul>
+                            <li>年满18岁、单身</li>
+                            <li>抱着严肃的态度</li>
+                            <li>真诚寻找另一半</li>
+                        </ul>    
+                    </td>
+                </tr>
+            </form>
+        </tbody>
+    </table> 
+    
+</body>
+</html>

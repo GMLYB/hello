@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="demo.jsp">
+
+        <!-- test 文本框  -->
+        用户名：<input type="text" name="username" value="halaso" maxlength="10"> <br>
+        密码：<input type="password" name="password" value="123456"> <br>
+
+        性别：
+        <label for="man">男</label> 
+        <input type="radio" name="sex" value="男" checked="checked" id="man"> 
+        <label for="woman">女</label>  
+        <input type="radio" name="sex" value="女" id="woman"> <br>
+
+        爱好：吃饭 <input type="checkbox" name="like"> 睡觉 <input type="checkbox" name="like"> 打豆豆 <input type="checkbox" name="like">
+        <br>
+        <input type="submit" value="免费注册"> <br>
+        <input type="reset" value="重置d"> <br>
+        文件上传：<input type="file" name="" id="">
+
+        <br>
+        <!-- select 下拉元素 使用 -->
+        <h3>select下拉</h3>
+        <select name="" id="">
+
+            <option value="山东">选项一</option>
+            <option value="天津" selected="selected">选项二</option>
+            <option value="北京">选项三</option>
+        </select>
+
+        <h3>文本域</h3>
+        <textarea name="" id="" cols="30" rows="10">今日反馈：textarea</textarea>
+
+
+
+
+    </form>
+    
+
+</body>
+</html>
