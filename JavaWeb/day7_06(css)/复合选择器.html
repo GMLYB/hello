@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>后代选择器</title>
+    <style>
+        /* 要把ol里面的小li选出来改为red */
+        ol li {
+            color: red;
+        }
+        ol li a {
+            text-decoration: none;
+            color: rgb(30, 233, 30);
+        }
+
+        .one li a {
+            color: yellow;
+        }
+
+    </style>
+</head>
+<body>
+    <ol>
+        <li>我是ol 的孩子</li>
+        <li>我是ol 的孩子</li>
+        <li>我是ol 的孩子</li>
+        <li><a href="#">内内层</a></li>
+    </ol>
+    <ul>
+        <li>我是ul 的孩子</li>
+        <li>我是ul 的孩子</li>
+        <li>我是ul 的孩子</li>
+    </ul>
+
+    <ol class="one">
+        <li>我是ol 的孩子</li>
+        <li>我是ol 的孩子</li>
+        <li>我是ol 的孩子</li>
+        <li><a href="#">内内层</a></li>
+    </ol>
+    
+</body>
+</html>

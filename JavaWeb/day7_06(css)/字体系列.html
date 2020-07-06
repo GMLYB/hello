@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字体</title>
+
+    <style>
+        /* 标题比较特殊，需要单独修改 */
+        h2 {
+            font-family: '宋体';
+            font-size: 28px;
+            font-weight: 400;
+        }
+        body {
+            font-family: "微软雅黑";
+            font-size: 20px;
+
+        }
+        .bold {
+            /* font-weight: bold; */
+            font-weight: 700;
+        }
+        .italic {
+            font-style: italic;
+        }
+        /* 让倾斜的字体不倾斜 */
+        em {
+            font-style: normal;
+        }
+
+        /* 想要div文字变倾斜 加粗 字号设置为16像素 并且 是微软雅黑 */
+        div {
+            /* font-style: italic;
+            font-weight: 700;
+            font-size: 16px;
+            font-family: "微软雅黑"; */
+            /* font: font-style font-weight font-size/line-height font-family; */
+            font: italic 700 16px/20px "Microsoft yahei";
+        }
+
+    </style>
+</head>
+<body>
+
+    <h2>登鹳雀楼</h2>
+    <em>黄河之水天上来</em>
+    <p class="italic">白日依山尽</p>
+    <p>黄河入海流</p>
+    <p class="bold">欲穷千里目</p>
+    <p>更上一层楼</p>
+
+    <div>送孟浩然之广陵</div>
+
+    
+</body>
+</html>

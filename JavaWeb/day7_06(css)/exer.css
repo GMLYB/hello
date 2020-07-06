@@ -1,0 +1,45 @@
+body {
+    font: 16px/28px "微软雅黑";
+}
+
+h2 {
+    /* 文字不加粗 */
+    font-weight: 400;
+    text-align: center;
+}
+
+.gray {
+    color: #888888;
+    font-size: 16px;
+    
+}
+
+a {
+    text-decoration: none;
+}
+
+table {
+    width: 100%;
+    text-align: center;
+}
+
+p {
+    text-indent: 2em;
+}
+
+.center {
+    text-align: center;
+}
+
+.right {
+    text-align: right;
+}
+
+#fenxiang {
+    text-align: right;
+}
+
+
+
+
+
