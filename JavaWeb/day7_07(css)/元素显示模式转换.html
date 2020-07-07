@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a {
+            width: 150px;
+            height: 50px;
+            background-color: yellow;
+            text-decoration: none;
+            /* 把行内元素转成块元素 */
+            display: block;
+        }
+
+        div {
+            display: inline;
+        }
+
+        span {
+            width: 100px;
+            height: 200px;
+            background-color: skyblue;
+            display: inline-block;
+        }
+
+    </style>
+</head>
+<body>
+
+    <a href="#">这是行内元素</a>
+
+    <div>我是块级元素</div>
+
+    <br>
+
+    <span>行内元素转换成行内块元素</span>
+    
+</body>
+</html>

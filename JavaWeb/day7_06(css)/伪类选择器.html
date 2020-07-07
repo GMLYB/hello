@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>伪类选择器</title>
+    <style>
+
+        /* 未访问的链接 a:link */
+        a:link {
+            color: red;
+            text-decoration: none;
+        }
+
+        /* 点击过的链接显示样式 */
+        a:visited {
+            color: yellow;
+        }
+
+        /* 鼠标放上链接上，链接颜色改变 */
+        a:hover {
+            color: blue;
+        }
+
+        a:active {
+            color: green;
+        }
+        div:hover{
+            color: red;
+            text-decoration: underline;
+        }
+        div:active{
+            color: yellow;
+        
+        }
+
+        /* 把获得光标的input表单元素选取出来 */
+        input:focus {
+            background-color: yellow;
+            color: red;
+        }
+
+    </style>
+</head>
+<body>
+    <a href="#">小猪佩奇</a>
+    <div>哈拉所</div>
+
+    <p>还是得发空间撒旦画发了复活了的控件咖喱会计师电话费</p>
+
+    <input type="text">圆通快递不会送货上门
+    <input type="text">中通快递不会送货上门
+    <input type="text">圆通快递不会送货上门
+    
+</body>
+</html>
