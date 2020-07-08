@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>盒子边框</title>
+
+    <style>
+
+        span {
+            display: block;
+            width: 200px;
+            height: 50px;
+            border-width: 10px;
+            border-style: solid;
+            border-color: blue;
+        }
+
+        div {
+            width: 200px;
+            height: 200px;
+            border: 10px solid blue;
+            border-top: 10px solid red;
+            padding: 10px;
+        }
+
+        table {
+            width: 500px;
+            height: 250px;
+        }
+        table,
+        th,
+        td {
+            border: 1px solid red;
+            /* 合并相邻的边框 */
+            border-collapse: collapse;
+            text-align: center;
+        }
+        th,
+        td {
+            height: 35px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <span>无情哈拉所</span>
+    <p></p>
+
+    <div>欧啊一丝颅脑啊，哈吉咩喋喋丝捏，嘎</div>
+
+    <p></p>
+    <table cellspacing="0"> 
+        <thead>
+            <tr>
+            <th>选择器</th>
+            <th>选择器权重</th>
+            </tr> 
+        </thead>
+        <tbody>
+            <tr>
+                <td>继承 或者 *</td>
+                <td>0,0,0,0</td>
+            </tr>
+            <tr>
+                <td>元素选择器</td>
+                <td>0,0,0,1</td>
+            </tr>
+            <tr>
+                <td>类选择器，伪类选择器</td>
+                <td>0,0,1,0</td>
+            </tr>
+            <tr>
+                <td>ID选择器</td>
+                <td>0,1,0,0</td>
+            </tr>
+            <tr>
+                <td>行内样式style=""</td>
+                <td>1,0,0,0</td>
+            </tr>
+            <tr>
+                <td>!important 重要的</td>
+                <td>∞ 无穷大</td>
+            </tr>
+        </tbody>
+    </table>
+
+    
+</body>
+</html>
