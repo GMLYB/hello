@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>清除浮动4</title>
+
+    <style>
+
+        .clearfix:before,
+        .clearfix:after {
+            content: "";
+            display: table;
+        }
+
+        .clearfix:after {
+            clear: both;
+        }
+
+        .clearfix {
+            *zoom: 1;
+        }
+
+        .box {
+            width: 800px;
+            border: 1px dotted red;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .box .damao {
+            float: left;
+            width: 300px;
+            height: 200px;
+            line-height: 200px;
+            background-color: tomato;
+        }
+        .box .ermao {
+            float: left;
+            width: 200px;
+            height: 200px;
+            line-height: 200px;
+            background-color: yellow;
+        }
+
+        .footer {
+            height: 200px;
+            background-color: black;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box clearfix">
+        <div class="damao">大毛</div>
+        <div class="ermao">二毛</div>
+        <div class="ermao">二毛</div>
+        <div class="ermao">二毛</div>
+        <div class="ermao">二毛</div>
+
+    </div>
+    <div class="footer"></div>
+
+    
+</body>
+</html>

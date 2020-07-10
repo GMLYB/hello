@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>常见的网页布局</title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body>div {
+            border: 1px dashed rgba(0, 0, 0, .3);
+            background-color: rgba(192, 189, 189, 0.3);
+            margin: 10px auto;
+            font-size: 12px;
+            text-align: center;
+            
+        }
+
+        .top {
+            width: 400px;
+            height: 100px;
+            line-height: 100px;
+        }
+
+        .banner {
+            width: 400px;
+            height: 50px;
+            line-height: 50px;
+        }
+
+        .main {
+            width: 400px;
+            height: 300px;
+            line-height: 300px;
+            background-color: transparent;
+            border: none;
+        }
+
+        .main .left {
+            float: left;
+            width: 140px;
+            height: 300px;
+            background-color: rgba(192, 189, 189, 0.3);
+            border: 1px dashed rgba(0, 0, 0, .3);
+        }
+
+
+        .main .right {
+            float: left;
+            margin-left: 16px;
+            width: 240px;
+            height: 300px;
+            background-color: rgba(192, 189, 189, 0.3);
+            border: 1px dashed rgba(0, 0, 0, 0.3);
+
+        }
+
+        .footer {
+            width: 400px;
+            height: 100px;
+            line-height: 100px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="top">top</div>
+    <div class="banner">banner</div>
+    <div class="main">
+        <div class="left">left</div>
+        <div class="right">right</div>
+    </div>
+    <div class="footer">footer</div>
+    
+</body>
+</html>
