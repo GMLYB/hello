@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Z-index</title>
+    <style>
+
+        .box {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 200px;
+        }
+
+        .xd {
+            background-color: red;
+            z-index: 1;
+        }
+
+        .xe {
+            background-color: green;
+            left: 50px;
+            top: 50px;
+            z-index: 2;
+        }
+
+        .gtq {
+            background-color: blue;
+            left: 100px;
+            top: 100px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="box xd">盒子1</div>
+    <div class="box xe">盒子2</div>
+    <div class="box gtq">盒子3</div>
+    
+</body>
+</html>
