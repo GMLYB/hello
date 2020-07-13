@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>淘宝轮播图样式</title>
+    <!-- 
+        大盒子类名为 tb-promo 淘宝广告
+        里面放一张图片
+        左右两个按钮用连接就好了 左箭头 prev 右箭头 next
+        底侧小圆点ul，类名为promo-nav 
+    -->
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .tb-promo {
+            position: relative;
+            width: 520px;
+            height: 280px;
+            margin: 100px auto;
+        }
+
+        .tb-promo img {
+            width: 520px;
+            height: 280px;
+        }
+
+        /* 并集选择器 存放两个代码相同部分 */
+        .prev,
+        .next {
+            position: absolute;
+            top: 50%; 
+            width: 20px;
+            height: 30px;
+            margin-top: -15px;
+            background-color: rgba(0, 0, 0, .3);
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .prev {
+            left: 0;
+            border-top-right-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+
+        .next {
+            right: 0;
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+        }
+
+        .promo-nav {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            margin-left: -35px;
+            width: 70px;
+            height: 13px;
+            background-color: rgba(255, 255, 255, .3);
+            border-radius: 7px;
+        }
+
+        .promo-nav li {
+            float: left;
+            width: 8px;
+            height: 8px;
+            background-color: white;
+            border-radius: 50%;
+            margin: 3px;
+        }
+
+        .promo-nav .selected {
+            background-color: #ff5000;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div class="tb-promo">
+        <img src="../image/tb.jpg" alt="">
+        <!-- 左侧按钮 -->
+        <a href="#" class="prev">&lt;</a>
+        <!-- 右侧按钮 -->
+        <a href="#" class="next">&gt;</a>
+        <!-- 小圆点 -->
+        <ul class="promo-nav">
+            <li class="selected"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
+    </div>
+    
+</body>
+</html>
