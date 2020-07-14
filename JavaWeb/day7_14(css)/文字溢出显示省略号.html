@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>溢出显示省略号</title>
+    <style>
+
+        .box1 {
+            width: 150px;
+            height: 80px;
+            color: white;
+            background-color: green;
+            margin: 100px auto;
+            /*  */
+            /* 1.先强制一行内显示文本 默认 normal 自动换行*/
+            white-space: nowrap;
+            /* 2.超出部分隐藏 */
+            overflow: hidden;
+            /* 3.文字用省略号替代超出部分 */
+            text-overflow: ellipsis;
+        }
+
+
+        .box2 {
+            width: 150px;
+            height: 85px;
+            color: white;
+            background-color: red;
+            margin: 50px auto;
+            /*  */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            /* 弹性伸缩盒子模型显示 */
+            display: -webkit-box;
+            /* 限制在一个块元素显示的文本行数 */
+            -webkit-line-clamp: 4;
+            /* 设置或检索伸缩和对象的子元素的排列方式 */
+            -webkit-box-orient: vertical;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        穿过你的心情的我的眼，穿过你的黑发的我的手
+    </div>
+
+    <div class="box2">
+        穿过你的心情的我的眼，穿过你的黑发的我的手,爱你我心口难开。我喝醉了，偷偷亲了一下风，风吹到你的脸上，你脸红害羞，映红了半边天的晚霞。
+    </div>
+    
+</body>
+</html>

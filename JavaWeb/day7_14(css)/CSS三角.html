@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三角制作</title>
+    <style>
+
+        .box1 {
+            width: 0;
+            height: 0;
+            /* border: 10px solid red; */
+            border-top: 100px solid red;
+            border-right: 100px solid green;
+            border-left: 100px solid blue;
+            border-bottom: 100px solid purple;
+        }
+        .box2 {
+            /* 宽高都要为0 */
+            width: 0;
+            height: 0;
+            border: 100px solid transparent;
+            border-top-color: red;
+            /* border-top: 100px solid red;
+            border-right: 100px solid green;
+            border-left: 100px solid blue;
+            border-bottom: 100px solid purple; */
+        }
+
+        .jd {
+            position: relative;
+            width: 120px;
+            height: 250px;
+            background-color: teal;
+        }
+
+        .jd span {
+            position: absolute;
+            right: 15px;
+            top: -10px;
+            width: 0;
+            height: 0;
+            /* 为了兼容性 */
+            line-height: 0;
+            font-size: 0;
+            border: 5px solid transparent;
+            border-bottom-color: teal;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    
+    <div class="box2"></div>
+
+    <div class="jd">
+        <span></span>
+    </div>
+</body>
+</html>

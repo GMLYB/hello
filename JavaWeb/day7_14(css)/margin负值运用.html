@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>margin负值运用</title>
+    <style>
+        ul li {
+            float: left;
+            list-style: none;
+            width: 150px;
+            height: 200px;
+            border: 1px solid red;
+            background-color: white;
+            margin-left: -1px;
+        }
+
+        ul li:hover {
+            /* 方式一、如果盒子没有定位，则鼠标经过添加相对定位即可 */
+            position: relative;
+            border: 1px solid blue;
+            /* 方式二、有定位 可以提高 z-index 数值即可 */
+        }
+
+    </style>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    
+</body>
+</html>

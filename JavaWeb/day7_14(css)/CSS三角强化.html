@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三角强化</title>
+    <style>
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        .box1 {
+            width: 0;
+            height: 0;
+            /* border-top: 50px solid red; */
+            /* border-top: 100px solid red; */
+            border-top: 100px solid transparent;
+            border-right: 50px solid blue;
+            /* border-bottom: 50px solid gray; */
+            border-bottom: 0 solid gray;
+            /* border-left: 50px solid green; */
+            border-left: 0 solid green;
+        }
+
+        .box2 {
+            width: 0;
+            height: 0;
+            border-color: transparent red transparent transparent;
+            border-style: solid;
+            border-width: 22px 8px 0 0;
+        }
+
+        .box3 {
+            width: 160px;
+            height: 24px;
+            border: 1px solid rgb(255, 37, 27);
+            margin: 10px auto;
+
+        }
+
+        .box3 h4 {
+            float: left;
+            width: 85px;
+            height: 25px;
+            line-height: 25px;
+            color: white;
+            background-color: rgb(255, 37, 27);
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .box3 h4 span {
+            font-size: 10px;
+        }
+
+        .sanjiao {
+            float: left;
+            width: 0;
+            height: 0;
+            border-color: rgb(255, 37, 27) transparent transparent transparent;
+            border-style: solid;
+            border-width: 24px 10px 0 0;
+        }
+
+        .box3 h5 {
+            float: right;
+            width: 65px;
+            height: 25px;
+            line-height: 25px;
+            text-decoration: line-through;
+            text-align: center;
+            font-size: 10px;
+            color: rgb(153, 153, 153);
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+
+    <div class="box2"></div>
+
+    <div class="box3">
+        <h4> <span>￥</span>2738.00</h4>
+        <div class="sanjiao"></div>
+        <h5>￥6699.00</h5>
+    </div>
+    
+</body>
+</html>

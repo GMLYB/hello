@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>去除边框</title>
+    <style>
+        div {
+            border: 2px solid red;
+            /* font-size: 0; */
+        }
+
+        img {
+            width: 20%;
+            /* 方式一:默认是和基线对齐的，想要去除，就对齐bottom | top | middle */
+            vertical-align: top;
+            /* 方式二：转成块级元素 */
+            /* display: block; */
+        }
+    </style>
+</head>
+<body>
+    <div>
+          <img src="../image/等待.jpg" alt="">
+    </div>
+    
+
+</body>
+</html>
