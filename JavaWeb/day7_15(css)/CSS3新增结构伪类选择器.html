@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 选择ul里面的第一个孩子小li  */
+        .one li:first-child {
+            background-color: green;
+        }
+
+        .one li:last-child {
+            background-color: red;
+        }
+
+        .one li:nth-child(5) {
+            color: red;
+        }
+        /* 关键字 */
+        .two {
+            margin-top: 50px;
+        }
+        /* 奇数 */
+        .two li:nth-child(odd){
+            background-color: red;
+        }
+        /* 偶数 */
+        .two li:nth-child(even){
+            background-color: green;
+        }
+        /* 公式 */
+        .three {
+            margin-top: 50px;
+        }
+
+        .three li:nth-child(n){
+            background-color: red;
+        }
+
+        .three li:nth-child(-n+5){
+            background-color: green;
+        }
+        /* 两个的区别 */
+        /* 不会变色 */
+        section div:nth-child(1){
+            background-color: red;
+        }
+        /* 第一个div变色 */
+        section div:nth-of-type(1){
+            background-color: green;
+        }
+
+    </style>
+</head>
+<body>
+    <ul class="one">
+        <li>我是第1个孩子</li>
+        <li>我是第2个孩子</li>
+        <li>我是第3个孩子</li>
+        <li>我是第4个孩子</li>
+        <li>我是第5个孩子</li>
+        <li>我是第6个孩子</li>
+        <li>我是第7个孩子</li>
+        <li>我是第8个孩子</li>
+    </ul>
+
+    <ul class="two">
+        <li>我是第1个孩子</li>
+        <li>我是第2个孩子</li>
+        <li>我是第3个孩子</li>
+        <li>我是第4个孩子</li>
+        <li>我是第5个孩子</li>
+        <li>我是第6个孩子</li>
+        <li>我是第7个孩子</li>
+        <li>我是第8个孩子</li>
+    </ul>
+
+    <ul class="three">
+        <li>我是第1个孩子</li>
+        <li>我是第2个孩子</li>
+        <li>我是第3个孩子</li>
+        <li>我是第4个孩子</li>
+        <li>我是第5个孩子</li>
+        <li>我是第6个孩子</li>
+        <li>我是第7个孩子</li>
+        <li>我是第8个孩子</li>
+    </ul>
+
+    <!-- 区别 -->
+    <section>
+        <p>哈拉少</p> 
+        <div>无情</div>
+        <div>无邪</div>
+    </section>
+    
+</body>
+</html>
