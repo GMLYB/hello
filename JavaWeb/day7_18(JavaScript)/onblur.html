@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>onblur</title>
+    <script>
+        // 静态注册失去焦点
+        function onblurfun(){
+            // console是控制台对象，是由JavaScript语言提供，专门用来向浏览器的控制器打印输出，用于测试使用
+            console.log("静态注册失去焦点事件");
+        }
+
+        // 动态注册onblur事件
+        window.onload = function(){
+            var password = document.getElementById("password");
+            password.onblur = function(){
+                console.log("动态注册失去焦点事件");
+            }
+        }
+
+    </script>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            /* css3盒子模型 */
+            box-sizing: border-box;
+        }
+
+        em,
+        i {
+            font-style: normal
+        }
+
+        div {
+            width: 240px;
+            height: 30px;
+            margin: 10px auto;
+            /* background-color: blue; */
+
+            
+        }
+
+        div input {
+            font-family: Microsoft YaHei, Heiti SC, tahoma, arial, Hiragino Sans GB, "\5B8B\4F53", sans-serif;
+            /* 去掉默认灰色边框 */
+            /* border: 0; */
+            /* 去掉蓝色边框 */
+            outline: none;
+        }
+
+        em {
+            float: left;
+            /* background-color: red; */
+            width: 80px;
+            height: 100%;
+            line-height: 30px;
+            /* background-color: red; */
+            text-align: right;
+        }
+        input {
+            float: left;
+            width: 160px;
+            height: 100%;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div> <em>用户名：</em> <input type="text" onblur="onblurfun();"></div>
+    <div> <em>密码：</em><input type="password" id="password"></div>
+
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onchange</title>
+    <script>
+        // 静态注册
+        function onchangefun(){
+            alert("你变了！");
+        }
+
+        // 动态注册
+        window.onload = function(){
+            
+            var place = document.getElementById("place");
+
+            place.onchange = function(){
+                alert("这是动态的");
+            }
+        }
+
+    </script>
+</head>
+<body>
+    请选择当代最出名的？
+    <select name="" id="" onchange="onchangefun();">
+        <option value="">女生</option>
+        <option value="">男生</option>
+        <option value="">你懂de</option>
+    </select>
+    <br>
+    请选择当代最热的地方？
+    <select name="" id="place">
+        <option value="">--地方--</option>
+        <option value="">南极</option>
+        <option value="">北极</option>
+        <option value="">你懂的</option>
+    </select>
+</body>
+</html>

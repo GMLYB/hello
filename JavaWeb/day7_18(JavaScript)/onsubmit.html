@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function onsubmitfun(){
+            //要验证所有表单项是否合法，如果，有一个不合法就阻止表单提交
+            alert("提交成功");
+            return false;
+        }
+
+
+        window.onload = function(){
+            var subobj = document.getElementById("sub");
+            
+            subobj.onsubmit = function(){
+                alert("动态提交成功");
+            return false;
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <!-- return false可以阻止表单提交 -->
+    <!-- <form action="http://localhost:90" method="GET" onsubmit="return false;"> -->
+    <form action="http://localhost:90" method="GET" onsubmit="return onsubmitfun()">
+        邮箱框：<input type="email">
+        <input type="submit" value="静态注册">
+
+    </form>
+
+    <br>
+
+    <form action="http://localhost:90" method="GET" id="sub">
+        邮箱框：<input type="email">
+        <input type="submit" value="动态注册">
+
+    </form>
+</body>
+</html>
