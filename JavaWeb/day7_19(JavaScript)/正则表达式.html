@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则表达式</title>
+    <script>
+        // var patt = /^\w{6,12}$/;
+
+        // 表示要求字符串中，是否包含字母 e 
+        var patt1 = new RegExp("e");
+        var patt1 = /e/; //和上面一致
+        alert(patt1);
+
+        // 表示要求字符串中，是否包含字母a b c 其中一个
+        var patt2 = /[abc]/;
+
+        var patt3 = /[a-z]/;
+        var patt4 = /[A-Z]/;
+        var patt5 = /[0-9]/;
+
+        // 表示要求至少包含一个a
+        var patt6 = /a+/
+
+        // 表示字符串中是否包含 0个或多个a 
+        var patt7 = /a*/
+
+        // 表示字符串中是否包含 1个或 0 个a 
+        var patt8 = /a?/
+
+        // 表示字符串是否包含连续三个a
+        var patt9 = /a{3}/
+
+        // 表示字符串是否包含连续三个 最多 五个 a
+        var patt10 = /a{3,5}/
+
+        
+        // 表示字符串是否包含最少连续三个 
+        var patt11 = /a{3,}/
+
+        // 必须 a 结尾
+        var patt12 = /a$/
+
+        // 必须 a 开头
+        var patt12 = /^a/
+
+        //问题  最多什么时候有用 
+        
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script>
+        // 需求：当用户点击了校验按钮，获取输出框的内容，然后验证其是否合法
+        // 验证规则：必须有字母、下划线、数字组成，并且长度6-12位。
+        function onclickfun(){
+            // 1 要操作一个标签的时候，需要先获取对象
+            var name = document.getElementById("name");//dom对象
+            // alert(name.id);
+            // alert(name.type);
+            // alert(name.value);
+            var nametext = name.value;
+            // 如何验证字符串 符合某个规则 需要使用正则表达式
+            var patt = /^\w{6,12}$/;
+            //test()用于测试某个字符串是不是匹配我的规则
+            // if(patt.test(nametext)){
+            //     alert("用户名合法");
+            // }else{
+            //     alert("用户名 no 合法");
+            // }
+
+            var userspanobj = document.getElementById("usernamespan");
+            // 表示起始标签和结束标签的内容 可以读 可以写
+            // alert(userspanobj.innerHTML); 
+
+            if(patt.test(nametext)){
+                userspanobj.innerHTML = "√";
+                userspanobj.style = "color: green";    
+            }else{
+                userspanobj.innerHTML = "×";
+                userspanobj.style = "color: red";   
+            }
+        }
+
+
+    </script>
+
+</head>
+<body>
+    用户名：<input type="text" id="name">
+    <span id="usernamespan"></span>
+    <button style="margin-left: 10px;" onclick="onclickfun()">校验</button>
+    
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Byname</title>
+    <script>
+        function checkall(){
+            // document.getElementsByTagName("input"); 按照指定标签名查询并返回集合
+            var inputs = document.getElementsByTagName("input");
+
+            for(var i = 0;i<inputs.length;i++){
+                inputs[i].checked = true;
+            }
+
+        }
+
+    </script>
+</head>
+<body>
+    兴趣爱好
+    <input type="checkbox" value="cpp">C++
+    <input type="checkbox" value="java">java
+    <input type="checkbox" value="js">JavaScript
+
+    <br><br>
+    <button onclick="checkall();">全选</button>
+</body>
+</html>
