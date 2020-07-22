@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>外部插入</title>
+    <script src="script/jquery-3.2.1.js"></script>
+    <script>
+        $(function(){
+            $("<h1>标题1</h1>").insertBefore("div");
+            $("<h1>标题1</h1>").insertAfter("div");
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <span>123</span>
+    </div>
+    <div>
+        <span>456</span>
+    </div>
+</body>
+</html>

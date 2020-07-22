@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>替换</title>
+    <script src="script/jquery-3.2.1.js"></script>
+    <script>
+        $(function () {
+            // $("div").replaceWith("<h1>标题1</h1>");
+            // $("<h1>标题1</h1>").replaceAll($("span"));
+            // $("span").replaceWith($("<h1>标题1</h1>"));
+
+
+            $("#Span1").replaceWith("<span title='replaceWith'>Rainier</span>");
+            $("<span title='replaceAll'>han163@163.com</span>").replaceAll("#Span2");
+
+        });
+    </script>
+</head>
+
+<body>
+    <div>
+        <span>123</span>
+        <span>456</span>
+        <span>789</span>
+    </div>
+
+    <div>
+        <span>abc</span>
+        <span>edf</span>
+        <span>xym</span>
+    </div>
+
+
+    <p>姓名：<span id="Span1"></span></p>
+    <p>邮箱：<span id="Span2"></span></p>
+</body>
+
+</html>
