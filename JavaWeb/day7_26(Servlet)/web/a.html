@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>标题</title>
+    <style>
+        div {
+            border: 1px solid red;
+            width: 1000px;
+            height: 600px;
+            margin: 10px auto;
+        }
+    </style>
+
+    <script>
+        var fun = function () {
+            alert("提交");
+            return false;
+        };
+    </script>
+
+</head>
+<body>
+    <div>
+        <form action="http://localhost:8080/0726_web" method="post">
+            <input type="text" name="name" value="root">123
+            <input type="password" name="password" value="123456">123
+            <input type="submit" value="提交" id="submit" onclick="return fun()">
+        </form>
+    </div>
+
+
+</body>
+</html>
