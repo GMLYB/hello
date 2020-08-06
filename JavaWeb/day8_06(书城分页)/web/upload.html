@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文件上传</title>
+    <style>
+        div,
+        input{
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!--1、要有一个 form 标签，method=post 请求-->
+    <!--2、form 标签的 encType 属性值必须为 multipart/form-data 值-->
+    <!--3、在 form 标签中使用 input type=file 添加上传的文件-->
+    <form action="http://localhost:8080/0730web/uploadServlet" method="post" encType="multipart/form-data">
+        <div>
+            用户名：<input type="text" name="username">
+        </div>
+        <div>
+            上传图片：<input type="file" name="photo">
+        </div>
+        <input type="submit">
+    </form>
+</body>
+</html>
