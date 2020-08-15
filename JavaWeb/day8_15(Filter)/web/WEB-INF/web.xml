@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+
+    <servlet>
+        <servlet-name>UserServlet</servlet-name>
+        <servlet-class>com.lyb.web.UserServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UserServlet</servlet-name>
+        <url-pattern>/userServlet</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>BookServlet</servlet-name>
+        <servlet-class>com.lyb.web.BookServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>BookServlet</servlet-name>
+        <url-pattern>/manager/bookServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ClientBookServlet</servlet-name>
+        <servlet-class>com.lyb.web.ClientBookServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ClientBookServlet</servlet-name>
+        <url-pattern>/client/bookServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>KaptchaServlet</servlet-name>
+        <servlet-class>com.google.code.kaptcha.servlet.KaptchaServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>KaptchaServlet</servlet-name>
+        <url-pattern>/kaptcha.jpg</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CartServlet</servlet-name>
+        <servlet-class>com.lyb.web.CartServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CartServlet</servlet-name>
+        <url-pattern>/cartServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>OrderServlet</servlet-name>
+        <servlet-class>com.lyb.web.OrderServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>OrderServlet</servlet-name>
+        <url-pattern>/orderServlet</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <!--别名-->
+        <filter-name>AdminFilter</filter-name>
+        <!--全类名-->
+        <filter-class>com.lyb.filter.AdminFilter</filter-class>
+        <!--配置参数-->
+        <init-param>
+            <param-name>username</param-name>
+            <param-value>root</param-value>
+        </init-param>
+        <init-param>
+            <param-name>url</param-name>
+            <param-value>jdbc:mysql:///test</param-value>
+        </init-param>
+        
+    </filter>
+    
+    <filter-mapping>
+        <!--当前拦截路径给哪个filter使用-->
+        <filter-name>AdminFilter</filter-name>
+        <!--拦截路径-->
+        <!-- / 表示请求地址为：http://ip:port/工程路径/ 映射到web目录 可以设置多个路径-->
+        <url-pattern>/pages/manager/*</url-pattern>
+        <url-pattern>/manager/bookServlet</url-pattern>
+    </filter-mapping>
+
+
+</web-app>
