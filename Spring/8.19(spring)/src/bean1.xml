@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!--集合类型属性注入-->
+    <bean id="student" class="pojo.Student">
+        <!--数组类型属性注入-->
+        <property name="courses">
+            <array>
+                <value>java数据课程</value>
+                <value>数据库课程</value>
+            </array>
+        </property>
+        <!--List类型属性注入-->
+        <property name="list">
+            <list>
+                <value>小朋友</value>
+                <value>是不是有很多问号</value>
+            </list>
+        </property>
+        <!--map类型属性注入-->
+        <property name="maps">
+            <map>
+                <entry key="难受" value="香菇"></entry>
+                <entry key="无情" value="哈拉少"></entry>
+            </map>
+        </property>
+        <!--set类型属性注入-->
+        <property name="sets">
+            <set>
+                <value>你好</value>
+                <value>hello</value>
+            </set>
+        </property>
+    </bean>
+
+</beans>

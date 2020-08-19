@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                            http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <util:list id="list">
+        <value>java入门到入土</value>
+        <value>Python入门到监狱</value>
+        <value>数据库删库到跑路</value>
+    </util:list>
+
+    <util:list id="courselist">
+        <ref bean="course1"></ref>
+        <ref bean="course2"></ref>
+    </util:list>
+    <bean id="course1" class="pojo.Course">
+        <property name="cname" value="java入门到放弃"></property>
+    </bean>
+    <bean id="course2" class="pojo.Course">
+        <property name="cname" value="Python入门到监狱"></property>
+    </bean>
+
+    <!--集合类型属性注入-->
+    <bean id="student" class="pojo.Student">
+        <!--List类型属性注入 类型为对象-->
+        <property name="list" ref="list"></property>
+        <property name="courseList" ref="courselist"></property>
+    </bean>
+
+</beans>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!--集合类型属性注入-->
+    <bean id="student" class="pojo.Student">
+        <!--List类型属性注入 类型为对象-->
+        <property name="courseList">
+            <list>
+                <ref bean="course1"></ref>
+                <ref bean="course2"></ref>
+            </list>
+        </property>
+
+    </bean>
+    <bean id="course1" class="pojo.Course">
+        <property name="cname" value="java入门到放弃"></property>
+    </bean>
+    <bean id="course2" class="pojo.Course">
+        <property name="cname" value="Python入门到监狱"></property>
+    </bean>
+
+</beans>

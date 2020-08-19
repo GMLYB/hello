@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import pojo.Book;
+import pojo.Emp;
 import pojo.Order;
 import pojo.User;
 import service.UserServiceImpl;
@@ -18,6 +19,14 @@ public class TestBean {
         //2.获取配置创建的对象
         UserServiceImpl userService = context.getBean("userService", UserServiceImpl.class);
         userService.add();
+    }
+
+
+    @Test
+    public void testdept(){
+        ApplicationContext context = new ClassPathXmlApplicationContext("bean8.xml");
+        Emp emp = context.getBean("emp", Emp.class);
+        System.out.println(emp);
     }
 
 }

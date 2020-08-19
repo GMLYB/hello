@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!--注入属性-级联赋值 方式二 -->
+    <bean id="emp" class="pojo.Emp">
+        <!--通过set方法注入外部bean-->
+        <!--两个普通的属性-->
+        <property name="ename" value="少年"></property>
+        <property name="gender" value="man"></property>
+        <!--级联赋值方式设置对象类属性-->
+        <property name="dept" ref="dept"></property>
+        <property name="dept.dname" value="财务部"></property>
+    </bean>
+    <bean id="dept" class="pojo.Dept"></bean>
+
+</beans>
