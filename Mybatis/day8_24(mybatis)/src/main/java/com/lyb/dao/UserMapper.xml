@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lyb.dao.UserMapper">
+
+    <select id="getUserList" resultType="com.lyb.pojo.User">
+        select `id`,`username`,`password`,`email` from t_user
+  </select>
+
+    <select id="getUserList2" resultType="com.lyb.pojo.User">
+        select `id`,`username`,`password`,`email` from t_user where `username` like "%"#{name}"%"
+  </select>
+
+    <select id="getUserById" resultType="com.lyb.pojo.User" parameterType="Integer">
+        select `id`,`username`,`password`,`email` from t_user where `id` = #{id}
+  </select>
+
+    <insert id="addUser" parameterType="com.lyb.pojo.User">
+        insert into t_user(`username`,`password`,`email`) values (#{username},#{password},#{email});
+    </insert>
+
+    <update id="updateUser" parameterType="com.lyb.pojo.User">
+        update t_user set `username` = #{username}, `password` = #{password}, `email` = #{email} where `id` = #{id}
+    </update>
+
+
+    <update id="updateUser2" parameterType="map">
+        update t_user set `username` = #{name}, `password` = #{pwd}, `email` = #{useremail} where `id` = #{userid}
+    </update>
+
+
+    <delete id="deleteUser" parameterType="Integer">
+        delete from t_user where `id` = #{id}
+    </delete>
+
+</mapper>
