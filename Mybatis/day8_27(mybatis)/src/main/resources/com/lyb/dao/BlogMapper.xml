@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyb.dao.BlogMapper">
+
+    <sql id="if-title-author">
+        <if test="title != null">
+            `title` = #{title}
+        </if>
+        <if test="author != null">
+            and `author` = #{author}
+        </if>
+    </sql>
+
+    <insert id="addBlog" parameterType="blog">
+        insert into blog(`id`,`title`,`author`,`create_time`,`views`)
+        values (#{id},#{title},#{author},#{createTime},#{views})
+    </insert>
+
+    <select id="queryBlogIF" parameterType="map" resultType="blog">
+        select `id`,`title`,`author`,`create_time`,`views` from blog
+        <where>
+            <include refid="if-title-author"/>
+        </where>
+    </select>
+    
+    <select id="queryBlogChoose" parameterType="map" resultType="blog">
+        select `id`,`title`,`author`,`create_time`,`views` from blog
+        <where>
+            <choose>
+                <when test="title != null">
+                    `title` = #{title}
+                </when>
+                <when test="author != null">
+                    `author` = #{author}
+                </when>
+                <otherwise>
+                    `views` = #{views}
+                </otherwise>
+            </choose>
+        </where>
+    </select>
+
+    <update id="updateBlog" parameterType="map">
+        update blog
+        <set>
+            <include refid="if-title-author"/>
+        </set>
+        where id = #{id}
+    </update>
+
+
+    <!--方式一-->
+    <select id="queryBlogForeach" parameterType="map" resultType="blog">
+          select `id`,`title`,`author`,`create_time`,`views` from blog
+          <where>
+              <foreach collection="ids" item="id" open=" ( " close=" ) " separator="or">
+                  id = #{id}
+              </foreach>
+          </where>
+    </select>
+
+    <!--方式二-->
+    <select id="queryBlogForeach2" parameterType="map" resultType="blog">
+        select `id`,`title`,`author`,`create_time`,`views` from blog where id in
+        <foreach collection="ids" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </select>
+
+
+
+
+</mapper>

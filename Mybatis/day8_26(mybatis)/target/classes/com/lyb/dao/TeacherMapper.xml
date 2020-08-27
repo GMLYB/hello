@@ -5,4 +5,33 @@
 <mapper namespace="com.lyb.dao.TeacherMapper">
 
 
+    <select id="getTeacher" resultMap="Teachermap">
+        select s.id sid,s.name sname,t.id tid,t.name tname from student s,teacher t where s.tid = t.id and t.id = #{tid}
+    </select>
+    <resultMap id="Teachermap" type="teacher">
+        <result property="id" column="tid"/>
+        <result property="name" column="tname"/>
+        <!--集合 集合中的泛型用ofType获取-->
+        <collection property="students" ofType="student2">
+            <result property="id" column="sid"/>
+            <result property="name" column="sname"/>
+            <result property="tid" column="tid"/>
+        </collection>
+    </resultMap>
+
+    <!--子查询-->
+    <select id="getTeacher2" resultMap="Teachermap2">
+        select `id`, `name` from teacher where id = #{tid}
+    </select>
+
+    <resultMap id="Teachermap2" type="teacher">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <collection property="students" column="id" javaType="ArrayList" ofType="student2" select="getStudents"/>
+    </resultMap>
+
+    <select id="getStudents" resultType="student2">
+        select `id`,`name`,`tid` from student where `tid` = #{id}
+    </select>
+
 </mapper>

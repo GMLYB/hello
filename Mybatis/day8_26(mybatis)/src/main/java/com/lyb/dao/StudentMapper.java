@@ -18,5 +18,4 @@ public interface StudentMapper {
 
     Student getStudentById(@Param("sid") int id);
 
-    Teacher getTeacherById(@Param("tid") int id);
 }
