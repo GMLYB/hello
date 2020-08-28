@@ -4,6 +4,9 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lyb.dao.BlogMapper">
 
+
+    <cache/>
+
     <sql id="if-title-author">
         <if test="title != null">
             `title` = #{title}
@@ -51,6 +54,7 @@
     </update>
 
 
+    <!--方式一-->
     <select id="queryBlogForeach" parameterType="map" resultType="blog">
           select `id`,`title`,`author`,`create_time`,`views` from blog
           <where>
@@ -60,6 +64,7 @@
           </where>
     </select>
 
+    <!--方式二-->
     <select id="queryBlogForeach2" parameterType="map" resultType="blog">
         select `id`,`title`,`author`,`create_time`,`views` from blog where id in
         <foreach collection="ids" item="id" open="(" close=")" separator=",">
@@ -67,6 +72,9 @@
         </foreach>
     </select>
 
+    <select id="queryBlogById" resultType="blog">
+        select `id`,`title`,`author`,`create_time`,`views` from blog where id = #{bid}
+    </select>
 
 
 

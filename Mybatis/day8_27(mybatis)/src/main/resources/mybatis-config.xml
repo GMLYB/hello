@@ -8,9 +8,12 @@
     <properties resource="db.properties"></properties>
 
     <settings>
-        <setting name="logImpl" value="LOG4J"/>
+        <!--<setting name="logImpl" value="LOG4J"/>-->
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
         <!--设置开启驼峰命名-->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <!--显式开启全局缓存-->
+        <setting name="cacheEnabled" value="true"/>
     </settings>
 
     <typeAliases>

@@ -1,6 +1,7 @@
 package com.lyb.dao;
 
 import com.lyb.pojo.Blog;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -21,4 +22,6 @@ public interface BlogMapper {
     List<Blog> queryBlogForeach(Map<String,Object> map);
 
     List<Blog> queryBlogForeach2(Map<String,Object> map);
+
+    Blog queryBlogById(@Param("bid") int id);
 }

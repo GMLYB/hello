@@ -93,4 +93,33 @@ public class BlogMapperTest {
         list.forEach(System.out::println);
 
     }
+
+
+
+    @Test
+    public void queryBlogById(){
+        SqlSession sqlSession1 = MybatisUtils.getSqlSession();
+        SqlSession sqlSession2 = MybatisUtils.getSqlSession();
+
+
+        BlogMapper mapper1 = sqlSession1.getMapper(BlogMapper.class);
+
+
+        Blog blog1 = mapper1.queryBlogById(1);
+//        Blog blog2 = mapper1.queryBlogById(2);
+        sqlSession1.close();
+
+        BlogMapper mapper2 = sqlSession2.getMapper(BlogMapper.class);
+
+        Blog blog3 = mapper2.queryBlogById(1);
+
+//        Blog blog4 = mapper2.queryBlogById(2);
+
+        System.out.println(blog1);
+//        System.out.println(blog2);
+        System.out.println(blog3);
+//        System.out.println(blog4);
+        sqlSession2.close();
+
+    }
 }
