@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyb.dao.BookMapper">
+
+    <select id="queryBooks" resultType="book">
+        select `id`,`name`,`author`,`price` from book
+    </select>
+
+    <insert id="addBook" parameterType="book">
+        insert into book(`name`,`author`,`price`) values (#{name},#{author},#{price})
+    </insert>
+
+    <select id="queryBookById" resultType="book">
+        select `id`,`name`,`author`,`price` from book where `id` = #{bid}
+    </select>
+
+    <update id="updateBook" parameterType="book">
+        update book set `name` = #{name},`author`=#{author},`price`=#{price} where `id`=#{id}
+    </update>
+
+    <delete id="deleteBook" parameterType="_int">
+        delete from book where `id` = #{bid};
+    </delete>
+
+</mapper>
