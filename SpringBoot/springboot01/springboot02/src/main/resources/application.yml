@@ -1,0 +1,12 @@
+#person:
+#    lastName: 王富贵
+#    age: 18
+#    boss: false
+#    birth: 2020/12/12
+#    maps: {k1: v1,k2: v2}
+#    lists:
+#      - li
+#      - zhao
+#    dog:
+#      name: xiao
+#      age: 2
