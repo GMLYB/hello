@@ -1,0 +1,20 @@
+2020-09-04 17:15:45.181  INFO 6260 --- [main] c.l.s.Springboot05ApplicationTests       : Starting Springboot05ApplicationTests on DESKTOP-E35CFAB with PID 6260 (started by ASUS in D:\git-bash\SpringBoot\springboot05)
+2020-09-04 17:15:45.184 DEBUG 6260 --- [main] c.l.s.Springboot05ApplicationTests       : Running with Spring Boot v2.3.3.RELEASE, Spring v5.2.8.RELEASE
+2020-09-04 17:15:45.185  INFO 6260 --- [main] c.l.s.Springboot05ApplicationTests       : No active profile set, falling back to default profiles: default
+2020-09-04 17:15:51.868  INFO 6260 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-09-04 17:15:52.960  INFO 6260 --- [main] c.l.s.Springboot05ApplicationTests       : Started Springboot05ApplicationTests in 9.705 seconds (JVM running for 14.7)
+2020-09-04 17:15:54.259 DEBUG 6260 --- [main] c.l.s.Springboot05ApplicationTests       : 这是debug()日志
+2020-09-04 17:15:54.260  INFO 6260 --- [main] c.l.s.Springboot05ApplicationTests       : 这是info()日志
+2020-09-04 17:15:54.260  WARN 6260 --- [main] c.l.s.Springboot05ApplicationTests       : 这是warn()日志
+2020-09-04 17:15:54.261 ERROR 6260 --- [main] c.l.s.Springboot05ApplicationTests       : 这是error()日志
+2020-09-04 17:15:54.406  INFO 6260 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-09-04 [main] INFO  com.lyb.springboot05.Springboot05ApplicationTests - Starting Springboot05ApplicationTests on DESKTOP-E35CFAB with PID 20252 (started by ASUS in D:\git-bash\SpringBoot\springboot05)
+2020-09-04 [main] DEBUG com.lyb.springboot05.Springboot05ApplicationTests - Running with Spring Boot v2.3.3.RELEASE, Spring v5.2.8.RELEASE
+2020-09-04 [main] INFO  com.lyb.springboot05.Springboot05ApplicationTests - No active profile set, falling back to default profiles: default
+2020-09-04 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-09-04 [main] INFO  com.lyb.springboot05.Springboot05ApplicationTests - Started Springboot05ApplicationTests in 8.838 seconds (JVM running for 13.173)
+2020-09-04 [main] DEBUG com.lyb.springboot05.Springboot05ApplicationTests - 这是debug()日志
+2020-09-04 [main] INFO  com.lyb.springboot05.Springboot05ApplicationTests - 这是info()日志
+2020-09-04 [main] WARN  com.lyb.springboot05.Springboot05ApplicationTests - 这是warn()日志
+2020-09-04 [main] ERROR com.lyb.springboot05.Springboot05ApplicationTests - 这是error()日志
+2020-09-04 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
