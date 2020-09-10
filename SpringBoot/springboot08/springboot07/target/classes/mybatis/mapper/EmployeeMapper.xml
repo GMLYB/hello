@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyb.springboot07.mapper.EmployeeMapper">
+
+    <!--Employee getEmpById(Integer id);-->
+    <select id="getEmpById" parameterType="int" resultType="employee">
+        select * from employee where id = #{id}
+    </select>
+    <!--int deleteEmpById(Integer id);-->
+    <delete id="deleteEmpById" parameterType="int">
+        delete from employee where id = #{id}
+    </delete>
+
+    <!--int insertEmp(Employee employee);-->
+    <insert id="insertEmp" parameterType="employee">
+        insert into employee(`lastName`,`email`,`gender`,`d_id`) values (#{lastName},#{email},#{gender},#{dId})
+    </insert>
+
+    <!--int updateEmp(Employee employee);-->
+    <update id="updateEmp" parameterType="employee">
+        update employee set `lastName`=#{lastName},`email`=#{email},`d_id`=#{dId} where `id`=#{id}
+    </update>
+
+</mapper>
