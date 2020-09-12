@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮播图</title>
+</head>
+<style>
+    a {
+        text-decoration: none;
+    }
+</style>
+
+<body>
+
+    <div id="app">
+        <button @click="redfun" v-show="index > 0">- </button>
+        <img :src="imgSrc[index]" width="120px">
+        <button @click="addfun" v-show="imgSrc.length-1 > index"> +</button>
+    </div>
+
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                index: 1,
+                imgSrc: [
+                    "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2429047651,1027856901&fm=26&gp=0.jpg",
+                    "https://img.tupianzj.com/uploads/allimg/200411/29-200411151I30-L.jpg",
+                    "https://img.tupianzj.com/uploads/200331/29-200331144201158.jpg",
+                    "https://img.tupianzj.com/uploads/allimg/201907/9999/rnaef2372b3f.jpg",
+                    "https://img.tupianzj.com/uploads/allimg/201908/9999/rn1a160d77f4.jpg"
+                    ],
+            },
+            methods: {
+                addfun: function () {
+                    if(this.index<10){
+                        this.index++;
+                    }
+                },
+                redfun:function(){
+                    if(this.index>0){
+                        this.index--;
+                    }
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family:'Microsoft YaHei';   
+        }
+        .wrap{
+            position: fixed;
+            left:0;
+            top:0;
+            width:100%;
+            height:100%;
+            background:#fff;
+
+        }
+        .search_form{
+            width:640px;
+            margin:100px auto 0;
+        }
+        .logo img{
+            display:block;
+            margin:0 auto;
+        }
+        .form_group{
+            width:640px;
+            height:40px;
+            margin-top:45px;
+        }
+        .input_txt{
+        width:538px;
+        height:38px;
+        padding:0px;
+        float:left;
+        border:1px solid #41a1cb;
+        outline:none;
+        text-indent:10px;
+        }
+
+        .input_sub{
+            width:100px;
+            height:40px;
+            border:0px;
+            float: left;
+            background-color: #41a1cb;
+            color:#fff;
+            font-size:16px;
+            outline:none;
+            cursor: pointer;
+            position: relative;
+        }
+        .input_sub.loading::before{
+            content:'';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: url('../img/loading.gif');
+        }
+
+        .hotkey{
+            margin:3px 0 0 2px;
+        }
+
+        .hotkey a{
+            font-size:14px;
+            color:#666;
+            padding-right:15px;
+        }
+        .weather_list{
+            height:200px;
+            text-align:center;
+            margin-top:50px;
+            font-size:0px;
+        }
+        .weather_list li{
+            display:inline-block;
+            width:140px;
+            height:200px;
+            padding:0 10px;
+            overflow: hidden;
+            position: relative;
+            background:url('img/line.png') right center no-repeat;
+            background-size: 1px 130px;
+        }
+
+        .weather_list li:last-child{
+            background:none;
+        }
+
+
+        .info_date{
+            width:100%;
+            height:40px;
+            line-height:40px;
+            color:#999;
+            font-size:14px;
+            left:0px;    
+            bottom:0px;    
+            margin-top: 15px;
+        }
+        .info_date b{
+            float: left;
+            margin-left:15px;
+        }
+
+        .info_type span{
+            color:#fda252;
+            font-size:30px;
+            line-height:80px;
+        }
+        .info_temp{
+            font-size:14px;  
+            color:#fda252;
+        }
+        .info_temp b{
+            font-size:13px;
+        }
+        .tem .iconfont {
+            font-size: 50px;
+        }
+        body,ul,h1,h2,h3,h4,h5,h6{
+            margin: 0;
+            padding: 0;
+        }
+        h1,h2,h3,h4,h5,h6{
+            font-size:100%;
+            font-weight:normal;
+        }
+        a{
+            text-decoration:none;
+        }
+        ul{
+            list-style:none;
+        }
+        img{
+            border:0px;
+        }
+
+        /* 清除浮动，解决margin-top塌陷 */
+        .clearfix:before,.clearfix:after{
+            content:'';
+            display:table;    
+        }
+        .clearfix:after{
+            clear:both;
+        }
+        .clearfix{
+            zoom:1;
+        }
+
+        .fl{
+            float:left;
+        }
+        .fr{
+            float:right;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="wrap" id="app">
+        <div class="search_form">
+          <div class="logo"><img src="img/logo.png" alt="logo" /></div>
+          <div class="form_group">
+            <input
+              type="text"
+              class="input_txt"
+              placeholder="请输入查询的天气"
+              @keyup.enter="searchfun" v-model="city"
+            />
+            <button class="input_sub" @click="searchfun">
+              搜 索
+            </button>
+          </div>
+          <div class="hotkey">
+            <a href="javascript:;" @click="changecity('北京')">北京</a>
+            <a href="javascript:;" @click="changecity('上海')">上海</a>
+            <a href="javascript:;" @click="changecity('广州')">广州</a>
+            <a href="javascript:;" @click="changecity('深圳')">深圳</a>
+          </div>
+        </div>
+        <ul class="weather_list">
+          <li v-for="item in wearher">
+            <div class="info_type"><span class="iconfont">{{item.type}}</span></div>
+            <div class="info_temp">
+              <b>{{item.low}}</b>
+              ~
+              <b>{{item.high}}</b>
+            </div>
+            <div class="info_date"><span>{{item.date}}</span></div>
+          </li>
+        </ul>
+      </div>
+      <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+      <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+      <!-- 官网提供的 axios 在线地址 -->
+      <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+      <!-- 自己的js -->  
+      <script>
+          var app = new Vue({
+              el:"#app",
+              data:{
+                  city:"",
+                  wearher:[]
+              },
+              methods:{
+                searchfun:function(){
+                    // console.log(this.city);
+                    var that = this;
+                    axios.get("http://wthrcdn.etouch.cn/weather_mini?city="+this.city).then
+                    (function(response){
+                        // console.log(response.data.data.forecast);
+                        that.wearher = response.data.data.forecast;
+                        // console.log(that.wearher);
+                    },(function(err){
+
+                    }))
+                },
+                changecity:function(city){
+                    // console.log(this.city);
+                    this.city=city;
+                    this.searchfun();
+                }
+              }
+          })
+        
+      </script>
+    
+</body>
+</html>

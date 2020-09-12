@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>记事本</title>
+    <style>
+        * {
+           padding:0;            /*清除内边距*/
+            margin:0;              /*清除外边距*/
+        }
+        #app {
+            width: 400px;
+            height: 600px;
+            margin: 10px auto;
+            text-align: center;
+        }
+        #app input {
+            width: 100%;
+        }
+        .show {
+            display: none;
+        }
+        .parent:hover .show{
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="message" @keyup.enter="addlist(message)">
+        <div class="parent" v-for="(item,index) in list" v-show="list.length>0">
+            <span style="float: left; padding-right: 20px;">{{index+1}}</span>
+            {{item}}
+            <span class="show" style="float: right" @click="chActive(index)">x</span>
+        </div>
+        <hr>
+        <div v-show="list.length>0">
+            <span style="float: left;">{{list.length}} items</span> 
+            <span style="float: right;" @click="clearAll">clear</span>
+        </div>
+    </div>
+    
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                message: "",
+                list:[]
+            },
+            methods:{
+                addlist:function(p1){
+                    this.list.push(p1);
+                },
+                chActive:function(p1){
+                    this.list.splice(p1,1);
+                },
+                clearAll:function(){
+                    this.list = []
+                }
+            }
+        })
+
+    </script>
+ 
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>元素显示</title>
+</head>
+<style>
+    .active{
+        border: 1px solid red;
+    }
+</style>
+
+<body>
+
+    <div id="app">
+        <button @click="addfun" v-show="10>count">+ </button>
+        <span type="text" style="display: inline-block;margin: 0px 20px;" v-text="count"></span>
+        <button @click="redfun" v-show="count>0"> -</button>
+        <hr>
+        <button @click="addfun" v-if="10>count">+ </button>
+        <span type="text" style="display: inline-block;margin: 0px 20px;" v-text="count"></span>
+        <button @click="redfun" v-if="count>0"> -</button>
+        <hr>
+        <img v-bind:src="imgSrc" alt="" v-bind:title="imgTitle" v-bind:class="isActive?'active':''" @click="chuangeActive">
+        <img :src="imgSrc" alt="" :title="imgTitle" :class="{active:isActive}" @click="chuangeActive">
+    </div>
+
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                count: 5,
+                imgSrc: "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2429047651,1027856901&fm=26&gp=0.jpg",
+                imgTitle: "星空",
+                isActive: false
+            },
+            methods: {
+                addfun: function () {
+                    if(this.count<10){
+                        this.count++;
+                    }
+                },
+                redfun:function(){
+                    if(this.count>0){
+                        this.count--;
+                    }
+                },
+                chuangeActive:function(){
+                    this.isActive = !this.isActive;
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>

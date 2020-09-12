@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>循环</title>
+</head>
+<body>
+    <div id="app">
+        一线城市：
+        <ul>
+            <li v-for="item in arr">
+                {{item}}
+            </li>
+        </ul>
+        <br>
+        添加索引：
+        <ul>
+            <li v-for="(item,index) in arr">
+                {{index+1}} : {{item}}
+            </li>
+        </ul>
+        数组：
+        <button @click="add">+</button>
+        <button @click="remove1">左－</button>
+        <button @click="remove2">右－</button>
+        <h2 v-for="item in food" :title="item.name">
+            {{item.name}} : {{item.price}}
+        </h2>
+        <hr>
+        <input type="button" value="点击" @click="addfood('蛋炒饭',18)">
+        <input type="text" @keyup.enter="say">
+        <h2 v-for="item in food" :title="item.name">
+            {{item.name}} : {{item.price}}
+        </h2>
+        <hr>
+        <input type="text" v-model="message" style="width: 600px" @keyup.enter="getM">
+        <h2>{{message}}</h2>
+    </div>
+
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var app = new Vue({
+        el:"#app",
+        data:{
+            arr:["北京","上海","广州","深圳"],
+            food:[
+                {"name":"牛奶","price":12},
+                {"name":"鸡蛋","price":2},
+                {"name":"馒头","price":5},
+                {"name":"豆浆","price":8}
+            ],
+            message:"化肥会挥发，黑化肥发灰，黑化肥发灰，灰化肥发黑，黑化肥发灰会挥发；灰化肥挥发会发黑。"
+        },
+        methods:{
+            add:function(){
+                this.food.push( {"name":"可乐","price":4});
+            },
+            remove1:function(){
+                this.food.shift();
+            },
+            remove2:function(){
+                this.food.pop();
+            },
+            addfood:function(p1,p2){
+                this.food.push({"name":p1,"price":p2});
+            },
+            say:function(){
+                alert("拟好");
+            }
+        }
+    })
+</script>
+    
+</body>
+</html>

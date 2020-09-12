@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>本地应用</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <h2 v-text="message+'!'"></h2>
+        <h2>{{user.age+"岁了"}}</h2>
+        <hr>
+        <p v-html="info1"></p>
+        <p v-html="info2"></p>
+        <p v-text="info2"></p>
+        <hr>
+        <input type="button" value="v-on指令" v-on:click="doIt"> <br>
+        <input type="button" value="v-on简写" @click="doIt"> <br>
+        <input type="button" value="双击" @dblclick="doIt"> <br>
+        <h2 @click="changeFood">{{food}}</h2>
+        <hr>
+        <button @click="addfun" v-show="10>count">+ </button><span type="text" style="display: inline-block;margin: 0px 20px;"
+            v-text="count"></span><button @click="redfun" v-show="count>0"> -</button>
+    </div>
+
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                message: "vue",
+                info1: "爷将主宰你的世界",
+                info2: "<h1>遇见，不会错过（8岁）</h1>",
+                food: "大白菜",
+                count: 5,
+                list: ["海上生明月", "天涯共此时", 112233, true],
+                user: {
+                    name: "lyb",
+                    age: 18
+                }
+            },
+            methods: {
+                doIt: function () {
+                    alert("点击了doIt");
+                },
+                changeFood: function () {
+                    // console.log(this.food);
+                    this.food += " 加猪肉!";
+                },
+                addfun: function () {
+                    if(this.count<10){
+                        this.count++;
+                    }
+                },
+                redfun:function(){
+                    if(this.count>0){
+                        this.count--;
+                    }
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>
