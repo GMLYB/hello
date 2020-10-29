@@ -338,3 +338,74 @@ ConcurrentHashMap：分段锁。兼顾了线程安全和效率的问题。
 
 * 优先选择HashMap。如果不是多个线程访问同一个资源的情况下，优先选择HashMap；局部变量，不是全局变量
 * 全局变量，多个线程共享访问，选择ConcurrentHashMap
+
+
+
+### 17. 开发一个自己的栈
+
+* 底层采用数组
+* 规则：先进后出
+* 出栈：取末尾元素
+* 入栈：每次都加到末尾
+
+
+
+### 18. IO流的体系和选择
+
+#### 分类
+
+* 按方向分：输入流和输出流
+* 按读取的单位分：字节流和字符流
+  * 字节流：FileInputStream、FileOutputStream
+  * 字符流：FileReader、FileWriter
+* 按处理的方式分：节点流和处理流
+* IO流的4大基类：InputStream、OutputStream、Reader、Writer
+
+#### 选择
+
+* 对于文本文件( .txt,java,.c,.cpp)，使用字符流处理
+* 对于非文本文件( .jpg，.mp3，.mp4，.avi，.doc，.ppt....)，使用字节流处理
+
+
+
+### 19. serialVersionUID的作用是什么？
+
+举例
+
+```java
+实体类：
+class Student imp...{
+    private int age;
+    private String name;
+    ...
+}
+
+序列化：
+ObjectOutputStream.write(stu);
+
+反序列化
+Student stu = ObjectinputStream.readObject();
+```
+
+
+
+### 20. Java异常体系-->保证java健壮性
+
+<img src="../image/异常.png" width="80%">
+
+**常见的运行时异常：**
+
+* 算数异常
+* 空指针异常
+* 类型转换异常
+* 数组越界
+* 数据格式异常-->试图把一字符串非法转换成数值（或相反）。
+* 数据存储异常
+
+**常见的非运行时异常：**
+
+* IOException
+* SQLException
+* FileNotFoundException
+* NoSuchFileException
+* NoSuchMethodException
