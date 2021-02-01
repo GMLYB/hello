@@ -99,3 +99,75 @@ public void doFilter(ServletRequest servletRequest, ServletResponse ServletRespo
 
 ```
 
+（4）注销
+
+```java
+@GetMapping("logout")
+public Result getUserOfLogin(HttpServletRequest request) throws Unsuppor..{
+    //token通过请求头传送
+    String token = request.getHeader("token");
+    
+    //删除redis中的token 
+    Boolean delete = redisTemplate.delete(token);
+    
+    return new Result(delete,"注销成功",100);
+}
+```
+
+
+
+
+
+
+
+### 4 前端操作
+
+#### （1）localStorage的使用
+
+* localStorage 用于长久保存整个网站的数据，保存的数据没有过期时间，直到手动去删除。
+* localStorage 属性是只读的。
+* 保存数据语法：
+
+```javascript
+//1
+localStorage.setItem("key", "value");
+
+//2
+localStorage.key = "value";
+```
+
+* 读取数据语法：
+
+```js
+//1
+var lastname = localStorage.getItem("key");
+
+//2
+var lastname = localStorage.key;
+```
+
+* 删除数据语法：
+
+```javascript
+localStorage.removeItem("key");
+```
+
+
+
+#### （2）使用ajax将token放入header中
+
+```ajax
+function ajaxRequest(url,type,success){
+	$.ajax({
+		url: url,
+		type: type,
+		dataType: "json",
+		headers:{"token":localStorage.token},
+		success: success,
+		error: function(xhr){
+			layer.msg("error : " + xhr.status);
+		},		
+	});
+}
+```
+
