@@ -63,7 +63,7 @@
 ##### Redis部署
 
 * 修改配置文件，让Redis后台启动。`redis.conf` 中的 daemonize改为yes
-* 启动：`redis-server configPath`
+* 启动：`redis-server configPath`。例如`redis-server /usr/local/redis/redis.conf`
 * 测试是否启动成功：`redis-cli ping`
 * 测试是否可用：
   * `redis-cli -p 6379`
