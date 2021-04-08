@@ -122,9 +122,228 @@
 
 #### 1.2 List
 
+* 在Redis中，List可以实现栈、队列、双向队列。
+* 所有list命令都是用l开头
 
+```java
+127.0.0.1:6379> keys *
+(empty array)
+127.0.0.1:6379> lpush list one #将一个或者多个值，插入列表的头部 lpush：左侧 rpush：右侧
+(integer) 1
+127.0.0.1:6379> lpush list two
+(integer) 2
+127.0.0.1:6379> lpush list three
+(integer) 3
+---------------------------------------------------
+127.0.0.1:6379> lrange list 0 -1 #通过区间获取list的值
+1) "three"
+2) "two"
+3) "one"
+127.0.0.1:6379> lrange list  0 1
+1) "three"
+2) "two"
+---------------------------------------------------
+127.0.0.1:6379> lpop list # lpop左边弹出 rpop右边弹出
+"three"
+127.0.0.1:6379> lrange list 0 -1
+1) "two"
+2) "one"
+3) "zero"
+127.0.0.1:6379> rpop list
+"zero"
+127.0.0.1:6379> lrange list 0 -1
+1) "two"
+2) "one"
+---------------------------------------------------
+127.0.0.1:6379> lindex list 0 #根据下标查询具体值
+"two"
+---------------------------------------------------    
+127.0.0.1:6379> llen list # 查询列表的长度
+(integer) 2
+127.0.0.1:6379> flushdb
+OK
+127.0.0.1:6379> llen list
+(integer) 0
+---------------------------------------------------
+127.0.0.1:6379> lpush list one
+(integer) 1
+127.0.0.1:6379> lpush list two
+(integer) 2
+127.0.0.1:6379> lpush list three
+(integer) 3
+127.0.0.1:6379> lpush list three
+(integer) 4
+127.0.0.1:6379> lpush list three
+(integer) 5
+127.0.0.1:6379> lrange list 0 -1
+1) "three"
+2) "three"
+3) "three"
+4) "two"
+5) "one"
+127.0.0.1:6379> lrem list 2 three # lrem 移除 数量 指定值
+(integer) 2
+127.0.0.1:6379> lrange list 0 -1
+1) "three"
+2) "two"
+3) "one"
+---------------------------------------------------
+127.0.0.1:6379> flushdb
+OK
+127.0.0.1:6379> keys *
+(empty array)
+127.0.0.1:6379> lpush mylist "hello1"
+(integer) 1
+127.0.0.1:6379> lpush mylist "hello2"
+(integer) 2
+127.0.0.1:6379> lpush mylist "hello3"
+(integer) 3
+127.0.0.1:6379> lpush mylist "hello4"
+(integer) 4
+127.0.0.1:6379> ltrim mylist 1 2 #通过下标截取指定的长度
+OK
+127.0.0.1:6379> lrange mylist 0 -1
+1) "hello3"
+2) "hello2"
+---------------------------------------------------
+rpoplpush：移除列表的最后一个元素，将它移动到新的列表中
+127.0.0.1:6379> lrange mylist 0 -1
+1) "hello3"
+2) "hello2"
+127.0.0.1:6379> rpoplpush mylist list2
+"hello2"
+127.0.0.1:6379> lrange mylist 0 -1
+1) "hello3"
+127.0.0.1:6379> lrange list2 0 -1
+1) "hello2"
+---------------------------------------------------
+lset：将列表中指定下标的值替换为另外一个值
+127.0.0.1:6379> flushdb
+OK
+127.0.0.1:6379> exists list # 判断列表是否存在。列表不存在就会报错
+(integer) 0
+127.0.0.1:6379> lset mylist 0 hello
+(error) ERR no such key
+127.0.0.1:6379> lpush mylist hello
+(integer) 1
+127.0.0.1:6379> lset mylist 0 world # 存在就更新下标的值，不存在就会报错
+OK
+127.0.0.1:6379> lrange mylist 0 0
+1) "world"
+---------------------------------------------------
+127.0.0.1:6379> flushdb
+OK
+127.0.0.1:6379> rpush list hello
+(integer) 1
+127.0.0.1:6379> rpush list world
+(integer) 2
+127.0.0.1:6379> linsert list before "world" "redis" #before 在某个单词之前插入某个单词
+(integer) 3
+127.0.0.1:6379> lrange list 0 -1
+1) "hello"
+2) "redis"
+3) "world"
+```
 
 #### 1.3 Set
+
+* set中的值不能重复
+* set的命令以s开头
+
+```
+127.0.0.1:6379> sadd myset hello # 添加元素
+(integer) 1
+127.0.0.1:6379> sadd myset world
+(integer) 1
+127.0.0.1:6379> sadd myset world
+(integer) 0
+——————————————————————————————————————————————
+127.0.0.1:6379> smembers myset 	#查看set中的元素
+1) "world"
+2) "hello"
+——————————————————————————————————————————————
+127.0.0.1:6379> sismember myset hello # 判断元素是否存在 1 存在 0 不存在
+(integer) 1
+127.0.0.1:6379> sismember myset hello2
+(integer) 0
+——————————————————————————————————————————————
+127.0.0.1:6379> scard myset #获取 set 中值
+(integer) 2
+——————————————————————————————————————————————
+127.0.0.1:6379> srem myset hello #移除set中的指定元素
+(integer) 1
+127.0.0.1:6379> smembers myset
+1) "world"
+——————————————————————————————————————————————
+127.0.0.1:6379> smembers myset
+1) "hello4"
+2) "hello3"
+3) "hello2"
+4) "hello1"
+5) "hello5"
+127.0.0.1:6379> SRANDMEMBER myset 1 #随机抽取set中的1个值
+1) "hello4"
+127.0.0.1:6379> SRANDMEMBER myset 1
+1) "hello3"
+——————————————————————————————————————————————
+127.0.0.1:6379> smembers myset
+1) "hello3"
+2) "hello1"
+3) "hello5"
+4) "hello4"
+5) "hello2"
+127.0.0.1:6379> SPOP myset 2 #随机移除元素 
+1) "hello1"
+2) "hello2"
+127.0.0.1:6379> smembers myset
+1) "hello3"
+2) "hello5"
+3) "hello4"
+——————————————————————————————————————————————
+127.0.0.1:6379> smembers set1
+1) "hello3"
+2) "hello2"
+3) "hello1"
+127.0.0.1:6379> smembers set2
+1) "world3"
+2) "world2"
+3) "world1"
+127.0.0.1:6379> smove set1 set2 hello1 # 将set1中的 hello1 移动到 set2中
+(integer) 1
+127.0.0.1:6379> smembers set2
+1) "hello1"
+2) "world3"
+3) "world2"
+4) "world1"
+127.0.0.1:6379> smembers set1
+1) "hello3"
+2) "hello2"
+——————————————————————————————————————————————
+127.0.0.1:6379> sadd set1 a b c d
+(integer) 4
+127.0.0.1:6379> sadd set2 c d e f
+(integer) 4
+#交集
+127.0.0.1:6379> sinter set1 set2
+1) "d"
+2) "c"
+#并集
+127.0.0.1:6379> sunion set1 set2
+1) "a"
+2) "b"
+3) "c"
+4) "f"
+5) "d"
+6) "e"
+#差集
+127.0.0.1:6379> sdiff set1 set2
+1) "a"
+2) "b"
+```
+
+
+
+
 
 
 
