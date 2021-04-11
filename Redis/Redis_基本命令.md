@@ -343,15 +343,101 @@ OK
 
 
 
-
-
-
-
 #### 1.4 Hash
 
+* 存储变更数据：例如user的name、age
+
+```
+127.0.0.1:6379> hset hash1 name li #赋值
+(integer) 1
+127.0.0.1:6379> hget hash1 name #取值
+"li"
+127.0.0.1:6379> hset hash1 name li name1 zhao name2 qian #多个赋值
+(integer) 2
+127.0.0.1:6379> hgetall hash1 # 取出所有键值对
+1) "name"
+2) "li"
+3) "name1"
+4) "zhao"
+5) "name2"
+6) "qian"
+127.0.0.1:6379> hdel hash1 name2 # 删除指定键值对
+(integer) 1
+127.0.0.1:6379> 
+127.0.0.1:6379> hgetall hash1 
+1) "name"
+2) "li"
+3) "name1"
+4) "zhao"
+127.0.0.1:6379> hlen hash1 #获取hash的长度
+(integer) 2
+127.0.0.1:6379> hexists hash1 name2 #判断hash中的key是否存在
+(integer) 0
+127.0.0.1:6379> hkeys hash1 #获取所有的key
+1) "name"
+2) "name1"
+127.0.0.1:6379> hset hash1 views 1 
+(integer) 1
+127.0.0.1:6379> hincrby hash1 views 1 #增量+1
+(integer) 2
+127.0.0.1:6379> hincrby hash1 views 1
+(integer) 3
+127.0.0.1:6379> hsetnx hash1 sex man #不存在+1，存在不变
+(integer) 1
+127.0.0.1:6379> hsetnx hash1 sex man
+(integer) 0
+
+```
 
 
-#### 1.5 Zset
+
+#### 1.5Zset（有序集合）
+
+* 在set的基础上增加 了一个值
+
+```
+127.0.0.1:6379> zadd zset1 1 one #增加
+(integer) 1
+127.0.0.1:6379> zadd zset1 2 two
+(integer) 1
+127.0.0.1:6379> zrange zset1 0 -1 #查询
+1) "one"
+2) "two"
+127.0.0.1:6379> zadd score 88 xiaoming
+(integer) 1
+127.0.0.1:6379> zadd score 70 xiaohong 64 xiaogang 90 xiaoli 
+(integer) 3
+127.0.0.1:6379> zrange score 0 -1 #排序 从低到高
+1) "xiaogang"
+2) "xiaohong"
+3) "xiaoming"
+4) "xiaoli"
+127.0.0.1:6379> zrangebyscore score -inf +inf #排序 从低到高
+1) "xiaogang"
+2) "xiaohong"
+3) "xiaoming"
+4) "xiaoli"
+127.0.0.1:6379> zrevrange score 0 -1 # 排序 从高到底
+1) "xiaoli"
+2) "xiaoming"
+3) "xiaohong"
+4) "xiaogang"
+127.0.0.1:6379> zrevrange score 0 -1 withscores #排序 显示排序数据
+1) "xiaoli"
+2) "90"
+3) "xiaoming"
+4) "88"
+5) "xiaohong"
+6) "70"
+7) "xiaogang"
+8) "64"
+127.0.0.1:6379> 
+
+```
+
+
+
+
 
 
 
