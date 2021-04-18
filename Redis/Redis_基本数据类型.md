@@ -431,26 +431,198 @@ OK
 6) "70"
 7) "xiaogang"
 8) "64"
-127.0.0.1:6379> 
+127.0.0.1:6379> zrangebyscore score -inf 80 withscores ## 显示分数在 0 - 80 分之间的人
+1) "xiaogang"
+2) "64"
+3) "xiaohong"
+4) "70"
+127.0.0.1:6379> zrange zset1 0 -1
+1) "one"
+2) "two"
+127.0.0.1:6379> zrem zset1 one # 根据key删除
+(integer) 1
+127.0.0.1:6379> zrange zset1 0 -1
+1) "two"
+127.0.0.1:6379> zcard zset1 # 获取有序集合中的个数
+(integer) 1
+127.0.0.1:6379> zrevrange score 0 -1 withscores
+1) "xiaoli"
+2) "90"
+3) "xiaoming"
+4) "88"
+5) "xiaohong"
+6) "70"
+7) "xiaogang"
+8) "64"
+127.0.0.1:6379> zcount score 70 89 # 统计符合区间内的值的个数
+(integer) 2
 
 ```
 
 
 
-
-
-
-
-
-
 ### 2 三种特殊数据类型
 
-#### 2.1 geospatial
+#### 2.1 geospatial 地理位置 -- 底层为zset
+
+* Redis的Geo可以推算出地理位置信息，两地之间的距离，方圆几里的人。
+* GEOADD：添加地理位置
+  * 两极无法直接添加
+  * 参数：key 经度 纬度 名称
+
+```
+127.0.0.1:6379> geoadd china:city 116.40 39.90 beijing
+(integer) 1
+...
+127.0.0.1:6379> geoadd china:city 120.16 30.24 hangzhou 108.96 34.26 xian
+(integer) 2
+```
+
+* GEODIST：返回两个给定位置之间的直线距离。若其中一个不存在，返回空
+
+```
+127.0.0.1:6379> geodist china:city beijing hangzhou
+"1127337.7813"
+127.0.0.1:6379> geodist china:city beijing hangzhou km
+"1127.3378"
+```
+
+* GEOHASH：讲二维的经纬度转换为一维的字符串。两个字符串越相像，代表位置越近
+
+```
+127.0.0.1:6379> geohash china:city shanghai hangzhou
+1) "wtw3sj5zbj0"
+2) "wtmkn31bfb0"
+```
+
+* GEOPOS：获取指定的城市的经度和纬度。
+
+```
+127.0.0.1:6379> geopos china:city beijing hangzhou
+1) 1) "116.39999896287918091"
+   2) "39.90000009167092543"
+2) 1) "120.1600000262260437"
+   2) "30.2400003229490224"
+
+```
+
+* GEORADIUS：以给定的经度和纬度为中心，查询某一半径内的元素
+
+```
+127.0.0.1:6379> georadius china:city 110 30 1000 km # key 经度 纬度 半径 单位
+1) "chongqing"
+2) "xian"
+3) "shenzhen"
+4) "hangzhou"
+127.0.0.1:6379> georadius china:city 110 30 1000 km withdist # 距离
+1) 1) "chongqing" #目标
+   2) "341.9374"  #距离
+2) 1) "xian"
+   2) "483.8340"
+3) 1) "shenzhen"
+   2) "924.6408"
+4) 1) "hangzhou"
+   2) "977.5143"
+127.0.0.1:6379> georadius china:city 110 30 1000 km withcoord  #经度 纬度
+1) 1) "chongqing"
+   2) 1) "106.49999767541885376"
+      2) "29.52999957900659211"
+2) 1) "xian"
+   2) 1) "108.96000176668167114"
+      2) "34.25999964418929977"
+3) 1) "shenzhen"
+   2) 1) "114.04999762773513794"
+      2) "22.5200000879503861"
+4) 1) "hangzhou"
+   2) 1) "120.1600000262260437"
+      2) "30.2400003229490224"
+127.0.0.1:6379> georadius china:city 110 30 1000 km count 2 # 查询结果取其中两个结果
+1) "chongqing"
+2) "xian"
+```
+
+* GEORADIUSBYMENBER：通过 key 的查询，查询某一半径内的元素
+
+```
+127.0.0.1:6379> georadiusbymember china:city beijing 1000 km
+1) "beijing"
+2) "xian"
+```
+
+* 删除 
+
+```
+127.0.0.1:6379> zrange china:city 0 -1
+1) "chongqing"
+2) "xian"
+3) "shenzhen"
+4) "hangzhou"
+5) "shanghai"
+6) "beijing"
+127.0.0.1:6379> zrem china:city xian
+(integer) 1
+127.0.0.1:6379> zrange china:city 0 -1
+1) "chongqing"
+2) "shenzhen"
+3) "hangzhou"
+4) "shanghai"
+5) "beijing"
+```
+
+#### 2.2 hyperloglog：基数统计
+
+* 基数：一个集合中不重复元素的个数
+* 传统：用set保存用户的ID，统计set中的元素数量即可。这个方式保存大量的用户ID，会占用大量的内存。
+* 优点：占用内存是固定的，特别小。2^64不同的元素，只占12KB内存。
+* 0.81%错误率，统计UV任务，可以忽略不计。
+
+```
+127.0.0.1:6379> pfadd mykey a b c d e f g # mykey 添加值
+(integer) 1
+127.0.0.1:6379> pfcount mykey # 统计mykey 存储值的量
+(integer) 7
+127.0.0.1:6379> pfadd mykey2 e f g h i j k l m 
+(integer) 1
+127.0.0.1:6379> pfcount mykey2
+(integer) 9
+127.0.0.1:6379> pfmerge mykey3 mykey mykey2 # 将mykey 和 mykey2 合并为 mykey3 
+OK
+127.0.0.1:6379> pfcount mykey3 # 统计 mykey3 的存储的值的量
+(integer) 13
+```
 
 
 
-#### 2.2 hyperloglog
+#### 2.3 bitmap
+
+* 位存储
+* 统计用户信息，活跃与不活跃、登录与未登录、打卡与未打卡等
+* 操作二进制位来进行记录，就只有两种状态：0 和 1
+
+```
+# 例子： 一周7天打卡，0代表周日 ，1 代表周一。。。 6代表周六；0代表未打卡，1代表打卡
+127.0.0.1:6379> setbit sign 0 0 #赋值
+(integer) 0
+127.0.0.1:6379> setbit sign 1 1
+(integer) 0
+127.0.0.1:6379> setbit sign 2 1
+(integer) 0
+127.0.0.1:6379> setbit sign 3 0
+(integer) 0
+127.0.0.1:6379> setbit sign 4 1
+(integer) 0
+127.0.0.1:6379> setbit sign 5 1
+(integer) 0
+127.0.0.1:6379> setbit sign 6 1
+(integer) 0
+127.0.0.1:6379> getbit sign 4 	#获取值
+(integer) 1
+127.0.0.1:6379> getbit sign 3
+(integer) 0
+127.0.0.1:6379> bitcount sign #  bitcount key [start end] 统计一周打卡天数
+(integer) 5
+
+```
 
 
 
-#### 2.3 bitmaps
