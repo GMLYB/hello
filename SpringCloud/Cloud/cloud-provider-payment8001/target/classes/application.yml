@@ -11,7 +11,13 @@ spring:
     username: springcloud
     password: 123456
 
-
 mybatis:
   mapperLocations: classpath:mapper/*.xml
   type-aliases-package: com.lyb.cloud.entities #实体类别名所在的包
+
+eureka:
+  client:
+    register-with-eureka: true # 向注册中心注册，默认为true
+    fetch-registry: true #是否从EurekaServer抓取自己已有的注册信息，默认为true
+    service-url:
+      defaultZone: http://localhost:7001/eureka/

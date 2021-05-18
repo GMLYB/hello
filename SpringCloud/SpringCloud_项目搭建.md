@@ -704,3 +704,97 @@ public CommonResult createPayment(@RequestBody Payment payment){
 }
 ```
 
+
+
+### 5 工程重构:cloud-api-commons
+
+* 将相似部分提取出来到公共部分
+
+
+
+#### 5.1 pom.xml
+
+```xml
+
+<dependencies>
+
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-devtools</artifactId>
+        <scope>runtime</scope>
+        <optional>true</optional>
+    </dependency>
+    <!--lombok-->
+    <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <optional>true</optional>
+    </dependency>
+
+    <dependency>
+        <groupId>cn.hutool</groupId>
+        <artifactId>hutool-all</artifactId>
+        <version>5.1.0</version>
+    </dependency>
+
+</dependencies>
+```
+
+
+
+#### 5.2 相似部分
+
+* Payment
+
+```java
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class Payment implements Serializable {
+    private Long id;
+    private String serial;
+}
+
+```
+
+* CommonResult
+
+```java
+/**
+ * 用于返回前端通用的json
+ */
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class CommonResult<T> {
+
+    // 200 success
+    private Integer code;
+    private String message;
+    private T data;
+
+    public CommonResult(Integer code, String message){
+        this(code,message,null);
+    }
+}
+
+```
+
+#### 5.3 maven进行clear和install
+
+
+
+#### 5.4 改造cloud-consumer-order80和cloud-provider-payment8001
+
+* 删除公共部分
+* 在pom中导入公共部分的jar包
+
+```xml
+<dependency>
+    <groupId>com.lyb.springcloud</groupId>
+    <artifactId>cloud-api-commons</artifactId>
+    <version>${project.version}</version>
+</dependency>
+
+```
+
