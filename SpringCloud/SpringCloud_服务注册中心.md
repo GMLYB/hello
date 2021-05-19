@@ -138,7 +138,7 @@ public class EurekaMain7001 {
 
 
 
-##### 将cloud-provider-payment8001注册到Eureka Server中
+##### 1 将cloud-provider-payment8001注册到Eureka Server中
 
 * 添加pom依赖
 
@@ -195,7 +195,7 @@ public class PaymentMain8001 {
 
 
 
-##### 将cloud-consumer-order80注册到Eureka Server中
+##### 2 将cloud-consumer-order80注册到Eureka Server中
 
 * 添加pom依赖
 
@@ -242,6 +242,186 @@ public class OrderMain80 {
 ![](..\SpringCloud\images\将80消费者注册到EurekaServer中.jpg)
 
 
+
+#### 2.3 EurekaServer集群环境构建步骤
+
+* 搭建cloud-eureka-server7002
+* pom与7001保持一致
+
+```xml
+<dependencies>
+    <!--eureka server-->
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+    </dependency>
+    <!--自定义api通用包-->
+    <dependency>
+        <groupId>com.lyb.springcloud</groupId>
+        <artifactId>cloud-api-commons</artifactId>
+        <version>${project.version}</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+
+    <!--通用配置-->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-devtools</artifactId>
+        <scope>runtime</scope>
+        <optional>true</optional>
+    </dependency>
+    <!--lombok-->
+    <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+    </dependency>
+    <!--test-->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-test</artifactId>
+        <scope>test</scope>
+    </dependency>
+    <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+    </dependency>
+</dependencies>
+```
+
+* 修改电脑hosts映射地址:C:\Windows\System32\drivers\etc\hosts
+
+```yaml
+127.0.0.1 eureka7001.com
+127.0.0.1 eureka7002.com
+```
+
+* 修改yml
+
+  * 7001yml
+
+  ```yaml
+  server:
+    port: 7001
+  
+  
+  eureka:
+    instance:
+      hostname: eureka7001.com #Eureka服务端实例名称
+    client:
+      fetch-registry: false #表示自己就是注册中心，不需要进行检索服务
+      register-with-eureka: false # 不向注册中心注册自己
+      service-url:
+        # 设置与EurekaServer交互的地址查询服务和注册服务都需要依赖这个地址
+        # defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+         defaultZone: http://eureka7002.com:7002/eureka/
+  ```
+
+  * 7002yml
+
+  ```yaml
+  server:
+    port: 7002
+  
+  
+  eureka:
+    instance:
+      hostname: eureka7002.com #Eureka服务端实例名称
+    client:
+      fetch-registry: false #表示自己就是注册中心，不需要进行检索服务
+      register-with-eureka: false # 不向注册中心注册自己
+      service-url:
+        # 设置与EurekaServer交互的地址查询服务和注册服务都需要依赖这个地址
+        # defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+         defaultZone: http://eureka7001.com:7001/eureka/
+  ```
+
+* 主启动
+
+```java
+@SpringBootApplication
+@EnableEurekaServer
+public class EurekaMain7002 {
+    public static void main(String[] args) {
+        SpringApplication.run(EurekaMain7002.class,args);
+    }
+}
+
+```
+
+* 测试
+  * http://eureka7001.com:7001/
+  * http://eureka7002.com:7002/
+
+
+
+##### 1 将订单支付服务8001发布到两台Eureka集群配置中
+
+* 修改8001yml
+
+```yaml
+server:
+  port: 8001
+
+spring:
+  application:
+    name: cloud-payment-service
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springcloud?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: springcloud
+    password: 123456
+
+mybatis:
+  mapperLocations: classpath:mapper/*.xml
+  type-aliases-package: com.lyb.cloud.entities #实体类别名所在的包
+
+eureka:
+  client:
+    register-with-eureka: true # 向注册中心注册，默认为true
+    fetch-registry: true #是否从EurekaServer抓取自己已有的注册信息，默认为true
+    service-url:
+#      defaultZone: http://localhost:7001/eureka
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
+```
+
+* 修改80yml
+
+```yaml
+server:
+  port: 80
+
+
+spring:
+  application:
+    name: cloud-order-service
+
+
+eureka:
+  client:
+    register-with-eureka: true # 向注册中心注册，默认为true
+    fetch-registry: true #是否从EurekaServer抓取自己已有的注册信息，默认为true
+    service-url:
+#      defaultZone: http://localhost:7001/eureka/
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
+```
+
+
+
+##### 2 启动顺序
+
+* 7001
+* 7002
+* 8001
+* 80
 
 
 
