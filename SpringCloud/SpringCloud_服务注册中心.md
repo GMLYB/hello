@@ -425,6 +425,298 @@ eureka:
 
 
 
+#### 2.4 支付服务provider8002集群配置
+
+* 新建模块：cloud-provider-payment8002
+
+* pom与8001一致
+
+```xml
+<dependencies>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.mybatis.spring.boot</groupId>
+        <artifactId>mybatis-spring-boot-starter</artifactId>
+    </dependency>
+    <!--alibaba-->
+    <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>druid-spring-boot-starter</artifactId>
+        <version>1.1.10</version>
+    </dependency>
+    <!--mysql-->
+    <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+    </dependency>
+    <!--jdbc-->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-jdbc</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-devtools</artifactId>
+        <scope>runtime</scope>
+        <optional>true</optional>
+    </dependency>
+    <!--lombok-->
+    <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <optional>true</optional>
+    </dependency>
+    <!--test-->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-test</artifactId>
+        <scope>test</scope>
+    </dependency>
+
+    <!--公共部分实体类-->
+    <dependency>
+        <groupId>com.lyb.springcloud</groupId>
+        <artifactId>cloud-api-commons</artifactId>
+        <version>${project.version}</version>
+    </dependency>
+    <!--eureka-client-->
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+    </dependency>
+
+</dependencies>
+
+```
+
+* application.yml
+
+```yaml
+server:
+  port: 8002
+
+spring:
+  application:
+    name: cloud-payment-service
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springcloud?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: springcloud
+    password: 123456
+
+mybatis:
+  mapperLocations: classpath:mapper/*.xml
+  type-aliases-package: com.lyb.cloud.entities #实体类别名所在的包
+
+eureka:
+  client:
+    register-with-eureka: true # 向注册中心注册，默认为true
+    fetch-registry: true #是否从EurekaServer抓取自己已有的注册信息，默认为true
+    service-url:
+#      defaultZone: http://localhost:7001/eureka
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
+```
+
+* 主启动类
+
+```java
+@SpringBootApplication
+@EnableEurekaClient
+public class PaymentMain8002 {
+    public static void main(String[] args) {
+        SpringApplication.run(PaymentMain8002.class,args);
+    }
+}
+
+```
+
+* 业务类与8001一致（别忘记还有资源文件的mapper）
+
+* 修改8001/8002的Controller：添加端口，可以知道是什么数据来自什么端口
+
+  ```java
+  @Value("${server.port}")
+  private String serverport;
+  ```
+
+* 启动顺序
+  * 7001
+  * 7002
+  * 8001
+  * 8002
+  * 80
+* 问题：消费者只能到访问8001端口。访问地址：http://localhost/consumer/payment/get/1
+
+```json
+{
+    "code":200,
+    "message":"查询Payment成功!,serverport = 8001",
+    "data":{
+        "id":1,
+        "serial":"test001"
+    }
+}
+```
+
+
+
+#### 2.5 添加负载均衡
+
+* 将消费者80端口的地址改为Eureka上的地址
+
+```java
+    private static final String PAYMENT_URL = "http://CLOUD-PAYMENT-SERVICE";
+```
+
+* 在ApplicationContextConfig上添加注解@LoadBalanced，实现负载均衡
+
+```java
+@Configuration
+public class ApplicationContextConfig {
+
+    @Bean
+    @LoadBalanced
+    public RestTemplate getRestTemplate(){
+        return new RestTemplate();
+    }
+}
+
+```
+
+* 访问地址：http://localhost/consumer/payment/get/1
+  * 结果：8001/8002轮播出现
+
+
+
+
+
+#### 2.6 actuator微服务信息完善
+
+* 修改服务名称和显示IP地址
+
+```
+server:
+  port: 8001
+
+spring:
+  application:
+    name: cloud-payment-service
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springcloud?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: springcloud
+    password: 123456
+
+mybatis:
+  mapperLocations: classpath:mapper/*.xml
+  type-aliases-package: com.lyb.cloud.entities #实体类别名所在的包
+
+eureka:
+  client:
+    register-with-eureka: true # 向注册中心注册，默认为true
+    fetch-registry: true #是否从EurekaServer抓取自己已有的注册信息，默认为true
+    service-url:
+#      defaultZone: http://localhost:7001/eureka
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
+  instance:
+    instance-id: payment8001 # 服务名称
+    prefer-ip-address: true  # 显示IP地址
+```
+
+* 效果
+
+![](..\SpringCloud\images\服务名称和IP地址.jpg)
+
+
+
+#### 2.7 服务发现Discovery
+
+获取在Eureka里面注册的微服务的服务信息
+
+* 在8001的Controller中添加DiscoveryClient
+
+```java
+@Resource
+private DiscoveryClient discoveryClient;
+
+@GetMapping(value = "/payment/discovery")
+public Object discovery(){
+    List<String> services = discoveryClient.getServices();
+    for (String element : services) {
+        log.info("PaymentController---> element: " + element);
+    }
+
+    List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-PAYMENT-SERVICE");
+    for (ServiceInstance instance : instances) {
+        log.info(instance.getServiceId() + " : " + instance.getHost() + " : " + instance.getPort() + " : " + instance.getUri());
+    }
+    return this.discoveryClient;
+}
+```
+
+* 在启动类中添加注解@EnableDiscoveryClient
+
+```java
+@SpringBootApplication
+@EnableEurekaClient
+@EnableDiscoveryClient
+public class PaymentMain8001 {
+    public static void main(String[] args) {
+        SpringApplication.run(PaymentMain8001.class,args);
+    }
+}
+```
+
+* 测试
+
+![](..\SpringCloud\images\Discovery.jpg)
+
+![](..\SpringCloud\images\Discovery2.jpg)
+
+
+
+#### 2.8 Eureka自我保护
+
+* 保护模式：用于一组客户端和Eureka Server之间存在网络分区场景下的保护，一旦进入保护模式，Eureka Server将会保护其服务注册表中的信息，不再删除服务注册表中的数据。
+
+![](..\SpringCloud\images\Eureka保护模式.jpg)
+
+* 原因：某个时刻某个微服务不能使用了，Eureka不会立刻清理，依旧会对该微服务的信息进行保存
+* 
+
+* 取消Eureka的自我保护：
+
+  * 7001
+
+  ```properties
+  # 关闭自我保护机制
+  eureka.server.enable-self-preservation=false
+  # 设置距离没有接到心跳的时间
+  eureka.server.eviction-interval-timer-in-ms=2000
+  ```
+
+  * 8001
+
+  ```properties
+  #Eureka客户端向服务端发送心跳的时间间隔，单位为s。默认30s
+  eureka.instance.lease-remewal-interval-in-seconds=1
+  #Eureka服务端在接收到最后一次心跳后等待的时间，默认为90s,超时将服务剔除
+  eureka.instance.lease-expiration-duration-in-seconds=2
+  ```
+
+  
+
+
+
 
 
 ### 3 Zookeeper 服务注册与发现
