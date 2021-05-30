@@ -721,6 +721,309 @@ public class PaymentMain8001 {
 
 ### 3 Zookeeper 服务注册与发现
 
+参考文章：https://blog.csdn.net/java_66666/article/details/81015302
+
+* zookeeper，它是一个分布式服务框架，是Apache Hadoop 的一个子项目，它主要是用来解决分布式应用中经常遇到的一些数据管理问题，如：统一命名服务、状态同步服务、集群管理、分布式应用配置项的管理等。
+* zookeeper=文件系统+监听通知机制
+
+
+
+#### 3.1 Zookeeper的安装
+
+* 官网地址：https://zookeeper.apache.org/releases.html
+
+* window下安装：https://blog.csdn.net/ring300/article/details/80446918
+
+  * 下载，并解压
+
+  * 将conf目录下的zoo_sample.cfg文件，复制一份，重命名为zoo.cfg
+
+  * 修改zoo.cfg配置文件，在安装目录新建data和log文件夹
+
+    * ```
+      dataDir=D:/Zookeeper/apache-zookeeper-3.7.0-bin/data
+      dataLogDir=D:/Zookeeper/apache-zookeeper-3.7.0-bin/log
+      ```
+
+  * 启动：zkServer.cmd
+
+  * 验证是否安装成功：zkCli.cmd，出现`COnnecting localhost 2181` 和  `Welcome to Zookeeper`
+
+* Linux下安装：https://www.cnblogs.com/expiator/p/9853378.html
+
+
+
+#### 3.2 创建模块cloud-provider-payment8004
+
+* pom
+
+```xml
+
+<dependencies>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-devtools</artifactId>
+        <scope>runtime</scope>
+        <optional>true</optional>
+    </dependency>
+    <!--lombok-->
+    <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <optional>true</optional>
+    </dependency>
+    <!--test-->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-test</artifactId>
+        <scope>test</scope>
+    </dependency>
+
+    <!--公共部分实体类-->
+    <dependency>
+        <groupId>com.lyb.springcloud</groupId>
+        <artifactId>cloud-api-commons</artifactId>
+        <version>${project.version}</version>
+    </dependency>
+    <!--zookeeper客户端-->
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-zookeeper-discovery</artifactId>
+    </dependency>
+
+</dependencies>
+
+```
+
+* application.yml
+
+```yaml
+server:
+  port: 8004
+
+
+#服务别名：将zookeeper注册到服务中心
+spring:
+  application:
+    name: cloud-provider-payment
+  cloud:
+      zookeeper:
+        connect-string: 127.0.0.1:2181
+```
+
+* 主启动类
+
+```java
+@SpringBootApplication
+@EnableDiscoveryClient //该注解用于向使用consul或者zookeeper作为注册中心时注册服务
+public class PaymentMain8004 {
+    public static void main(String[] args) {
+        SpringApplication.run(PaymentMain8004.class,args);
+    }
+}
+```
+
+* controller
+
+```java
+@RestController
+@Slf4j
+public class PaymentController {
+    
+    @Value("${server.port}")
+    private String serverport;
+    
+    @RequestMapping(value = "/payment/zk")
+    public String paymentzk(){
+        return "springcloud with zookeeper:" + serverport + "\t" + UUID.randomUUID().toString();
+    }
+}
+```
+
+* 结果
+
+![](..\SpringCloud\images\8004注册进入zookeeper.jpg)
+
+![](..\SpringCloud\images\8004注册进入zookeeper2.jpg)
+
+![](..\SpringCloud\images\8004注册进入zookeeper3.jpg)
+
+```json
+{
+  "name": "cloud-provider-payment",
+  "id": "2cb0e33e-0789-4757-8e32-c98ca2580a23",
+  "address": "9B0Q8QMIWFR62AQ",
+  "port": 8004,
+  "sslPort": null,
+  "payload": {
+    "@class": "org.springframework.cloud.zookeeper.discovery.ZookeeperInstance",
+    "id": "application-1",
+    "name": "cloud-provider-payment",
+    "metadata": {}
+  },
+  "registrationTimeUTC": 1622393834996,
+  "serviceType": "DYNAMIC",
+  "uriSpec": {
+    "parts": [
+      {
+        "value": "scheme",
+        "variable": true
+      },
+      {
+        "value": "://",
+        "variable": false
+      },
+      {
+        "value": "address",
+        "variable": true
+      },
+      {
+        "value": ":",
+        "variable": false
+      },
+      {
+        "value": "port",
+        "variable": true
+      }
+    ]
+  }
+}
+```
+
+
+
+#### 3.3  将订单服务注册进入zookeeper
+
+* 创建模块cloud-consumerzk-order80
+
+* pom
+
+```xml
+<dependencies>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-devtools</artifactId>
+        <scope>runtime</scope>
+        <optional>true</optional>
+    </dependency>
+    <!--lombok-->
+    <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <optional>true</optional>
+    </dependency>
+    <!--test-->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-test</artifactId>
+        <scope>test</scope>
+    </dependency>
+
+    <!--公共部分实体类-->
+    <dependency>
+        <groupId>com.lyb.springcloud</groupId>
+        <artifactId>cloud-api-commons</artifactId>
+        <version>${project.version}</version>
+    </dependency>
+    <!--zookeeper客户端-->
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-zookeeper-discovery</artifactId>
+    </dependency>
+
+</dependencies>
+```
+
+* application.yml
+
+```yaml
+server:
+  port: 80
+
+spring:
+  application:
+    name: cloud-consumer-order
+  cloud:
+      zookeeper:
+        connect-string: 127.0.0.1:2181
+```
+
+* 主启动类
+
+```java
+@SpringBootApplication
+@EnableDiscoveryClient
+public class OrderZKMain80 {
+    public static void main(String[] args) {
+        SpringApplication.run(OrderZKMain80.class,args);
+    }
+}
+```
+
+* ApplicationContextConfig
+
+```java
+@Configuration
+public class ApplicationContextConfig {
+    
+    @Bean
+    @LoadBalanced
+    public RestTemplate getRestTemplate(){
+        return new RestTemplate();
+    }
+    
+}
+```
+
+* controller
+
+```java
+@RestController
+@Slf4j
+public class OrderZKController {
+    
+    public static final String INVOKE_URL = "http://cloud-provider-payment";
+    
+    @Resource
+    private RestTemplate restTemplate;
+    
+    @GetMapping(value = "/consumer/payment/zk")
+    public String paymentInfo(){
+        String result = restTemplate.getForObject(INVOKE_URL + "/payment/zk",String.class);
+        return result;
+    }
+    
+}
+
+```
+
+* 结果
+
+  * http://localhost/consumer/payment/zk
+
+  ```
+  [zk: localhost:2181(CONNECTED) 9] ls /services
+  [cloud-consumer-order, cloud-provider-payment]	
+  ```
+
+
+
 
 
 
