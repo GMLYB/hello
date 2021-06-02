@@ -1030,5 +1030,257 @@ public class OrderZKController {
 
 ### 4 Consul 服务注册与发现
 
+* 是一套开源的分布式服务发现和配置管理系统，由Go语言开发。
+* 官网下载：https://www.consul.io/downloads
+* 下载解压之后，出现consul.exe文件即可
 
 
+
+#### 4.1 运行consul
+
+* 查看版本：`consul --version`
+* 开发模式启动
+  * consul agent -dev
+  * 访问地址:http://localhost:8500
+
+
+
+#### 4.2 服务提供者provider8006
+
+* 建立模块cloud-provider-payment8006
+
+* POM.xml
+
+```xml
+<dependencies>
+    <!--consul客户端-->
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-consul-discovery</artifactId>
+    </dependency>
+    <!--springboot 整合Web组件-->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+    <!--日常通用配置-->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-devtools</artifactId>
+        <scope>runtime</scope>
+        <optional>true</optional>
+    </dependency>
+    <!--lombok-->
+    <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <optional>true</optional>
+    </dependency>
+    <!--test-->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-test</artifactId>
+        <scope>test</scope>
+    </dependency>
+
+    <!--公共部分实体类-->
+    <dependency>
+        <groupId>com.lyb.springcloud</groupId>
+        <artifactId>cloud-api-commons</artifactId>
+        <version>${project.version}</version>
+    </dependency>
+
+</dependencies>
+
+```
+
+* application.yml
+
+```yaml
+server:
+  port: 8006
+  
+#服务别名：将consul注册到服务中心
+spring:
+  application:
+    name: cloud-provider-payment
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name}
+  
+
+```
+
+* 主启动类
+
+```java
+@SpringBootApplication
+@EnableDiscoveryClient //该注解用于向使用consul或者zookeeper作为注册中心时注册服务
+public class PaymentMain8006 {
+    public static void main(String[] args) {
+        SpringApplication.run(PaymentMain8006.class,args);
+    }
+}
+
+```
+
+* Controller
+
+```java
+@RestController
+@Slf4j
+public class PaymentController {
+
+    @Value("${server.port}")
+    private String serverport;
+
+    @RequestMapping(value = "/payment/consul")
+    public String paymentzk(){
+        return "springcloud with consul:" + serverport + "\t" + UUID.randomUUID().toString();
+    }
+}
+
+```
+
+* 结果
+  * 访问地址：http://localhost:8006/payment/consul
+
+![](..\SpringCloud\images\8006注册进入consul.jpg)
+
+
+
+#### 4.3 服务消费者cloud-consumerconsul-order80
+
+* 新建模块
+* pom
+
+```xml
+<dependencies>
+    <!--consul客户端-->
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-consul-discovery</artifactId>
+    </dependency>
+    <!--springboot 整合Web组件-->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+    <!--日常通用配置-->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-devtools</artifactId>
+        <scope>runtime</scope>
+        <optional>true</optional>
+    </dependency>
+    <!--lombok-->
+    <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <optional>true</optional>
+    </dependency>
+    <!--test-->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-test</artifactId>
+        <scope>test</scope>
+    </dependency>
+
+    <!--公共部分实体类-->
+    <dependency>
+        <groupId>com.lyb.springcloud</groupId>
+        <artifactId>cloud-api-commons</artifactId>
+        <version>${project.version}</version>
+    </dependency>
+
+</dependencies>
+
+```
+
+* application.yml
+
+```yaml
+server:
+  port: 80
+
+#服务别名：将consul注册到服务中心
+spring:
+  application:
+    name: cloud-consumer-order
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name}
+
+
+```
+
+* 主启动类
+
+```java
+@SpringBootApplication
+@EnableDiscoveryClient
+public class OrderConsulMain80 {
+    public static void main(String[] args) {
+        SpringApplication.run(OrderConsulMain80.class,args);
+    }
+}
+
+```
+
+* config
+
+```java
+@Configuration
+public class ApplicationContextConfig {
+
+    @Bean
+    @LoadBalanced
+    public RestTemplate getRestTemplate(){
+        return new RestTemplate();
+    }
+
+}
+
+```
+
+* controller
+
+```java
+@RestController
+@Slf4j
+public class OrderConsulController {
+
+    public static final String INVOKE_URL = "http://cloud-provider-payment";
+
+    @Resource
+    private RestTemplate restTemplate;
+
+    @GetMapping(value = "/consumer/payment/consul")
+    public String paymentInfo(){
+        String result = restTemplate.getForObject(INVOKE_URL + "/payment/consul",String.class);
+        return result;
+    }
+
+}
+```
+
+* 测试
+  * 地址：http://localhost/consumer/payment/consul
+
+
+
+### 5 三个服务注册中心的异同点
