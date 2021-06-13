@@ -72,3 +72,98 @@ public CommonResult<Payment> getPayment2(@PathVariable("id") Long id){
 }
 ```
 
+ 
+
+### 4 IRule
+
+根据特定算法从服务列表中选取一个要访问的服务
+
+```java
+public interface IRule{
+    /*
+     * choose one alive server from lb.allServers or
+     * lb.upServers according to key
+     * 
+     * @return choosen Server object. NULL is returned if none
+     *  server is available 
+     */
+
+    public Server choose(Object key);
+    
+    public void setLoadBalancer(ILoadBalancer lb);
+    
+    public ILoadBalancer getLoadBalancer();    
+}
+```
+
+* 7种特定算法(IRule的实现类)
+
+  * **com.netflix.loadbalancer.RoundRobinRule** 轮询
+  * **com.netflix.loadbalancer.RandomRule** 随机
+  * **com.netflix.loadbalancer.RetryRule** 先按照轮询策略获取服务，如果获取服务失败则在指定时间内会进行重试，获取可用的服务
+  * **WeightedResponseTimeRule** 对轮询策略的拓展，响应速度越快的实例选择权重越大，越容易被选择
+  * **BestAvailableRule** 过滤掉由于多次访问故障而处于断路由器跳闸状态的服务，然后选择一个并发量最小的服务
+  * **AvailabilityFilteringRule** 过滤掉故障实例，选择并发较小的实例
+  * **ZoneAvoidanceRule** 默认规则，复合判断server所在区域的性能和server的可用性选择服务器
+
+* 替换
+
+  * 新建包名：com.lyb.myrule（规则不能放在主启动类及其以下的路径，因此需要新建一个包）
+  * 新建Java：MySelfRule
+
+  ```java
+  @Configuration
+  public class MySelfRule {
+      
+      @Bean
+      public IRule myRule(){
+          return new RandomRule();//定义轮询规则为随机
+      }
+  }
+  ```
+
+  * 修改controller
+
+  ```java
+  @SpringBootApplication
+  @EnableEurekaClient
+  @RibbonClient(name = "CLOUD-PAYMENT-SERVICE",configuration = MySelfRule.class)
+  public class OrderMain80 {
+      public static void main(String[] args) {
+          SpringApplication.run(OrderMain80.class,args);
+      }
+  }
+  ```
+
+* 测试：`http://localhost/consumer/payment/get/1`
+
+
+
+### 5 负载均衡算法原理
+
+#### 5.1 原理
+
+* 负载均衡算法：rest接口第几次请求数 % 服务器集群总数量 = 实际调用服务器位置下标。每次服务器重启后rest接口计数从1开始
+
+> List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-PAYMENT-SERVICE");
+>
+> 如：
+>
+> ​	List[0] instances = 127.0.0.1:8002
+>
+> ​	List[1] instances = 127.0.0.1:8001
+>
+> 8001 + 8001组合为集群，集群总数为2，轮询算法原理 
+>
+> 总请求数为1时：1 % 2 = 1，对应下标为1，则获取127.0.0.1:8001
+>
+> 总请求数为2时：2 % 2 = 0，对应下标为0，则获取127.0.0.1:8002
+>
+> 总请求数为3时：3 % 2 = 1，对应下标为1，则获取127.0.0.1:8001
+>
+> 总请求数为4时：4 % 2 = 0，对应下标为0，则获取127.0.0.1:8002
+>
+> ..........
+
+
+
