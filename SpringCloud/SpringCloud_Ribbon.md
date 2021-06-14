@@ -167,3 +167,85 @@ public interface IRule{
 
 
 
+#### 5.2 自己写一个负载均衡轮询算法
+
+* 改造8001和8002的controller，在controller中添加以下方法
+
+```java
+    @GetMapping(value = "/payment/lb")
+    public String getPaymentLB(){
+        return serverport;
+    }
+```
+
+* 改造cloud-consumer-order80
+
+  * 去除ApplicationContextConfig中的@LoadBalanced注解
+  * 新建接口LoadBalancer
+
+  ```java
+  public interface LoadBalancer {
+      ServiceInstance instances(List<ServiceInstance> serviceInstances);
+  }
+  
+  ```
+
+  * 实现类MyLB
+
+  ```java
+  @Component
+  public class MyLB implements LoadBalancer{
+  
+      private AtomicInteger atomicInteger = new AtomicInteger(0);
+  
+      /**
+       * 获取访问次数
+       * @return 第几次访问
+       */
+      public final int getAndIncrement(){
+          int current;
+          int next;
+          do {
+              current = this.atomicInteger.get();
+              //判断轮询次数是否超过int最大值，next取current+ 1
+              next = current >= Integer.MAX_VALUE ? 0 : current + 1;
+          }while (!this.atomicInteger.compareAndSet(current,next));
+          return next;
+      }
+  
+      @Override
+      public ServiceInstance instances(List<ServiceInstance> serviceInstances) {
+          //获取轮询下标
+          int index = getAndIncrement() % serviceInstances.size();
+          
+          return serviceInstances.get(index);
+      }
+  }
+  
+  ```
+
+  * 修改controller，添加
+
+  ```java
+      @Resource
+      private LoadBalancer loadBalancer;
+      @Resource
+      private DiscoveryClient discoveryClient;
+  
+      @GetMapping(value = "/consumer/payment/lb")
+      public String getPaymentLB(){
+          List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-PAYMENT-SERVICE");
+          if (instances == null || instances.size() <= 0){
+              return null;
+          }
+          //获取下一个提供者实例
+          ServiceInstance serviceInstance = loadBalancer.getinstances(instances);
+          //获取URI
+          URI uri = serviceInstance.getUri();
+  
+          return restTemplate.getForObject(uri + "/payment/lb",String.class);
+  
+      }
+  ```
+
+  * 测试：http://localhost/consumer/payment/lb
